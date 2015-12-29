@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <title>Proyecto Odin</title>
+
+    <!--Stylesheets-->
+    <link type="text/css" rel="stylesheet" href="/assets/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap/bootstrap-theme.min.css"/>
+
+</head>
+<body ng-controller="mainController">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bienvenidos a Odin</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Equipos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Equipo 1</a></li>
+                        <li><a href="#">Equipo 2</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Ver mas</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publicaciones <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Publicacion 1</a></li>
+                        <li><a href="#">Publicacion 2</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Ver mas</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Crear nueva</a></li>
+                    </ul>
+                </li>
+                <li class="inactive"><a href="#">Configuracion</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Log In</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Odin</h1>
+        <p>Esto es un ejemplo de la página de Bootstrap</p>
+        <p>
+            <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/getting-started/#download" role="button">Bootstrap Docs</a>
+        </p>
+    </div>
+</div>
+<div class="container">
+    <div ng-view>
+    </div>
+</div>
+
+<!--Libs-->
+<script src="/public/lib/jquery-1.11.3.min.js"></script>
+<script src="/public/lib/bootstrap.min.js"></script>
+
+<!--Angular-->
+<script src="public/lib/angular.js"></script>
+<script src="public/lib/angular-route.js"></script>
+<script src="public/lib/angular-resource.js"></script>
+<script src="public/lib/ng-map.min.js"></script>
+<script src="public/lib/places-auto-complete.js"></script>
+
+<!--Scripts  Falta adaptar para nodejs -->
+
+<script src="/app/app.js"></script>
+<script src="/app/controllers/etiquetasController.js"></script>
+<script src="/app/controllers/mainController.js"></script>
+
+</body>
+</html>
