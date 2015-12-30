@@ -8,11 +8,7 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/home.html',
             controller: 'mainController'
         })
-        .when('/app', {
-            templateUrl: 'views/home.html',
-            controller: 'mainController'
-        })
-        .when('/app/etiquetas', {
+        .when('/etiquetas', {
             templateUrl: 'views/etiquetas.html',
             controller: 'etiquetasController'
         })
@@ -23,7 +19,7 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
 
 app.factory("Etiqueta", ['$resource', function($resource) {
 
-    return $resource("/_ah/api/etiqueta/:id", null,
+    return $resource("/api/etiqueta/:id", null,
         {
             'query': { method:'GET', isArray: false }
         });

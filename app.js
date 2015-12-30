@@ -17,12 +17,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', routes);
-app.use('/public', express.static('public'));
-app.use('/views', express.static('views'));
-app.use('/users', users);
-
 endpoints.inyectar(app);
+app.use('/', express.static('public'));
+app.use('/users', users);
+app.use('/', routes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

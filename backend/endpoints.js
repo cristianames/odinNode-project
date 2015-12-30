@@ -2,7 +2,7 @@ var Etiqueta = require('./modelo/Etiqueta');
 
 exports.inyectar = function(app) {
 
-    app.get('/_ah/api/etiqueta', function(req, res) {
+    app.get('/api/etiqueta', function(req, res) {
         res.json({items: [
             new Etiqueta('tag1'),
             new Etiqueta('tag2'),
