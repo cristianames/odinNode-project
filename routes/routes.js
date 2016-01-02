@@ -1,8 +1,13 @@
 var express = require('express');
-var router = express.Router();
 
-router.get('/*', function(req, res) {
-  res.sendFile('public/index.html', { root: './' });
-});
+module.exports = function(instancia) {
 
-module.exports = router;
+  var router = express.Router();
+  router.get('/*', function(req, res) {
+    //res.sendFile('index.html', { root: './' });
+    res.setHeader('Content-Type', 'text/html');
+    res.send(instancia.cache_get('index.html') );
+  });
+
+  instancia.app.use('/', router);
+};

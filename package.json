@@ -1,10 +1,29 @@
 {
-  "name": "odinNodeProject",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
+  "name": "OpenShift-Sample-App",
+  "version": "1.0.0",
+  "description": "OpenShift Sample Application",
+  "keywords": [
+    "OpenShift",
+    "Node.js",
+    "application",
+    "openshift"
+  ],
+  "author": {
+    "name": "OpenShift",
+    "email": "ramr@example.org",
+    "url": "http://www.openshift.com/"
   },
+  "homepage": "http://www.openshift.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openshift/origin-server"
+  },
+
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+
   "dependencies": {
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
@@ -12,7 +31,11 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0",
-    "firebase": "*"
-  }
+    "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+
+  "private": true,
+  "main": "server.js"
 }
