@@ -13,4 +13,11 @@ exports.inyectar = function(app) {
         ]});
     });
 
+    app.get('/api/publicacion', function(req,res){
+        res.json({items:[
+            new Etiqueta('Publicacion tramposa 1'),
+            new Etiqueta('Publicacion tramposa 2')
+        ]});
+    });
+
 }

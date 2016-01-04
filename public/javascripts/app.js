@@ -24,3 +24,14 @@ app.factory("Etiqueta", ['$resource', function($resource) {
             'query': { method:'GET', isArray: false }
         });
 }]);
+
+app.factory("Publicacion", ['$resource', function($resource) {
+
+    return $resource("/api/publicacion/:id", null,
+        {
+            'query': { method:'GET', isArray: false }
+        });
+}]);
+
+
+
