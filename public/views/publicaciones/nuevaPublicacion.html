@@ -1,15 +1,15 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Nueva publicacion</a>
+            <a class="navbar-brand">Nueva publicacion</a>
         </div>
         <div id="navbar" class="navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
                 <!--<li class="unactive"><a href="#">Cancelar </a></li>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="unactive"><a href="#">Cancelar </a></li>
-                <li class="unactive"><a href="#"> Guardar</a> </li>
+                <li class="unactive"><a href="#" ng-click="onCancelar()">Cancelar </a></li>
+                <li class="unactive"><a href="#" ng-click="onGuardar()"> Guardar</a> </li>
             </ul>
         </div>
     </div>
@@ -31,7 +31,8 @@
         </tr>
     </table>
     <label for="descripcion" style="margin-top: 10px"> Descripcion:</label>
-    <textarea id="descripcion" rows="2" cols="100">Inserte breve descripción</textarea>
-    <label for="desarrollo" style="margin-top: 10px"> Desarrollo:</label>
-    <textarea id="desarrollo" rows="20" cols="120">Inserte contenido</textarea>
+    <textarea id="descripcion" rows="2" cols="100" ng-model="publicacionDescripcion" ng-click="onDescripcion()"
+    ng-init="algo = 1"></textarea>
+    <label for="contenido" style="margin-top: 10px"> Desarrollo:</label>
+    <textarea id="contenido" rows="20" cols="120" ng-model="publicacionContenido" ng-click="onContenido()"></textarea>
 </form>
