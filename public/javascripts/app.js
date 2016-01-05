@@ -12,6 +12,10 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/etiquetas.html',
             controller: 'etiquetasController'
         })
+        .when('/publicacion/nueva', {
+            templateUrl: 'views/publicaciones/nuevaPublicacion.html',
+            controller: 'publicacionesController'
+        })
         .otherwise({
             redirectTo: '/error'
         });

@@ -21,7 +21,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Bienvenidos a Odin</a>
+            <a class="navbar-brand" href="/">Bienvenidos a Odin</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -42,7 +42,7 @@
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Ver mas</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Crear nueva</a></li>
+                        <li><a href="/publicacion/nueva">Crear nueva</a></li>
                     </ul>
                 </li>
                 <li class="inactive"><a href="#">Configuracion</a></li>
@@ -53,16 +53,8 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div class="jumbotron">
-        <h1>Odin</h1>
-        <p>Esto es un ejemplo de la página de Bootstrap</p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="http://getbootstrap.com/getting-started/#download" role="button">Bootstrap Docs</a>
-        </p>
-    </div>
-</div>
-<div class="container">
+<div id="fix-for-navbar-fixed-top-spacing" style="height: 60px;">&nbsp;</div>
+<div class="container" padding>
     <div ng-view>
     </div>
 </div>
