@@ -20,8 +20,6 @@ exports.inyectar = function(app) {
         ]});
     });
 
-    app.post('/api/publicacion',var publicacion,function(req,res){
-
-    })
-
-}
+    //app.post('/api/publicacion',var publicacion,function(req,res){
+    //
+    //},var a);
