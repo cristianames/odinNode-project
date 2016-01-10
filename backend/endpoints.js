@@ -1,30 +1,10 @@
-var Etiqueta = require('./modelo/Etiqueta');
+var etiquetas = require('./endpoints/Etiqueta');
+var publicacion = require('./endpoints/Publicacion');
 
-exports.inyectar = function(app) {
+exports.inyectar = function(app, Firebase) {
 
-    app.get('/api/etiqueta', function (req, res) {
-        res.json({
-            items: [
-                new Etiqueta('tag1'),
-                new Etiqueta('tag2'),
-                new Etiqueta('tag3'),
-                new Etiqueta('tag4'),
-                new Etiqueta('tag5'),
-                new Etiqueta('tag6')
-            ]
-        });
-    });
+    //Agregar los proximos endpoints en la carpeta endpoints siguiendo el esquema de los otros.
 
-    app.get('/api/publicacion', function (req, res) {
-        res.json({
-            items: [
-                new Etiqueta('Publicacion tramposa 1'),
-                new Etiqueta('Publicacion tramposa 2')
-            ]
-        });
-    });
+    etiquetas.inyectar(app, Firebase);
+    publicacion.inyectar(app, Firebase);
 }
-
-    //app.post('/api/publicacion',var publicacion,function(req,res){
-    //
-    //},var a);
