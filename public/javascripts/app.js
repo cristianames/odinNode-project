@@ -1,7 +1,5 @@
 var app = angular.module('app', ['ngRoute', 'ngResource', 'ngMap']);
 
-
-
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
 
@@ -26,14 +24,6 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             redirectTo: '/error'
         });
 });
-
-app.factory("Etiqueta", ['$resource', function($resource) {
-
-    return $resource("/api/etiqueta/:id", null,
-        {
-            'query': { method:'GET', isArray: false }
-        });
-}]);
 
 app.factory('EtiquetaFactory', ['$http', function($http) {
 
@@ -66,31 +56,37 @@ app.factory('EtiquetaFactory', ['$http', function($http) {
 
 app.factory('PublicacionesFactory', ['$http', function($http) {
 
-        var urlBase = '/api/publicacion';
-        var PublicacionesFactory = {};
+    var urlBase = '/api/publicacion';
+    var PublicacionesFactory = {};
 
     PublicacionesFactory.getPublicaciones = function () {
-            return $http.get(urlBase);
-        };
+        return $http.get(urlBase);
+    };
 
     PublicacionesFactory.getPublicacion = function (id) {
-            return $http.get(urlBase + '/:' + id);
-        };
+        return $http.get(urlBase + '/:' + id);
+    };
 
     PublicacionesFactory.insertPublicacion = function (pub) {
-            return $http.post(urlBase, pub);
-        };
+        return $http.post(urlBase, pub);
+    };
 
     PublicacionesFactory.updatePublicacion = function (pub) {
-            return $http.put(urlBase + '/:' + pub.ID, pub)
-        };
+        return $http.put(urlBase + '/:' + pub.ID, pub)
+    };
 
     PublicacionesFactory.deletePublicacion = function (id) {
-            return $http.delete(urlBase + '/:' + id);
-        };
+        return $http.delete(urlBase + '/:' + id);
+    };
 
-        return PublicacionesFactory;
-    }]);
+    return PublicacionesFactory;
+}]);
 
-
-
+//
+//app.factory("Etiqueta", ['$resource', function($resource) {
+//
+//    return $resource("/api/etiqueta/:id", null,
+//        {
+//            'query': { method:'GET', isArray: false }
+//        });
+//}]);

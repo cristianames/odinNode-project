@@ -5,11 +5,10 @@ var publicaciones = new Firebase('https://odingrid.firebaseio.com/publicaciones'
 exports.inyectar = function(app) {
 
     app.get('/api/publicacion', function (req, res) {
-        res.json({
-            items: [
-                new Etiqueta('Publicacion tramposa 1'),
-                new Etiqueta('Publicacion tramposa 2')
-            ]
+
+        publicaciones.once("value", function (data) {
+            var lista = data.val();
+            res.send(lista);
         });
     });
 

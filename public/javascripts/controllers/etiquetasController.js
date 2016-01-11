@@ -1,5 +1,5 @@
-app.controller('etiquetasController', ['$scope', 'EtiquetaFactory', 'PublicacionesFactory',
-    function($scope,EtiquetaFactory, PublicacionesFactory) {
+app.controller('etiquetasController', ['$scope', 'EtiquetaFactory',
+    function($scope, EtiquetaFactory) {
 
 
        //Etiqueta.query(function(data){
