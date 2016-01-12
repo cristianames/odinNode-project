@@ -27,12 +27,11 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
 
 app.factory('EtiquetaFactory', ['$http', function($http) {
 
-    var etiquetas = new Firebase('https://odingrid.firebaseio.com/etiquetas');
     var urlBase = '/api/etiqueta';
     var EtiquetaFactory = {};
 
     EtiquetaFactory.getEtiquetas = function () {
-        return $http.get(urlBase, etiquetas);
+        return $http.get(urlBase);
     };
 
     EtiquetaFactory.getEtiqueta = function (id) {
