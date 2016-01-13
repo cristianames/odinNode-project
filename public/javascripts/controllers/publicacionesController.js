@@ -1,4 +1,5 @@
-app.controller("publicacionesController", ['$scope', '$location', 'PublicacionesFactory', function(scope, location, Publicaciones){
+//SI DESGLOSAN ESTE ARCHIVO EN VARIOS JS, PRIMERO CREEN UNA CARPETA QUE LOS CONTENGA A TODOS
+app.controller("nuevaPublicacionController", ['$scope', '$location', 'PublicacionesFactory', function(scope, location, Publicaciones){
     scope.publicacionDescripcion = "Inserte breve descripción.";
     scope.publicacionContenido = "Inserte contenido.";
     scope.publicacionCheckbox = true;  //Si no se pone en true entonces arranca undefined.
@@ -30,5 +31,9 @@ app.controller("publicacionesController", ['$scope', '$location', 'Publicaciones
         Publicaciones.insertPublicacion(pub)
             //.success(alert("Publicacion guardad exitosamente!"));
     }
+
+}]);
+
+app.controller("publicacionesController", ['$scope', '$location', function(scope, location){
 
 }]);

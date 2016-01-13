@@ -9,16 +9,16 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             controller: 'mainController'
         })
         .when('/etiquetas', {
-            templateUrl: 'views/etiquetas.html',
+            templateUrl: 'views/etiquetas/etiquetas.html',
             controller: 'etiquetasController'
         })
         .when('/publicacion/nueva', {
             templateUrl: 'views/publicaciones/nuevaPublicacion.html',
-            controller: 'publicacionesController'
+            controller: 'nuevaPublicacionController'
         })
-        .when('/publicacion/dashboard', {
-            templateUrl: 'views/publicaciones/dashboardPublicacion.html',
-            controller: 'dashboardPublicacionController'
+        .when('/publicaciones', {
+            templateUrl: 'views/publicaciones/publicaciones.html',
+            controller: 'publicacionesController'
         })
         .otherwise({
             redirectTo: '/error'
