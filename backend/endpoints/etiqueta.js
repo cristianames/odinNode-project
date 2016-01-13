@@ -9,16 +9,5 @@ exports.inyectar = function(app) {
             var lista = data.val();
             res.send(lista);
         });
-
-        //res.json({
-        //    items: [
-        //        new Etiqueta('tag1'),
-        //        new Etiqueta('tag2'),
-        //        new Etiqueta('tag3'),
-        //        new Etiqueta('tag4'),
-        //        new Etiqueta('tag5'),
-        //        new Etiqueta('tag6')
-        //    ]
-        //});
     });
 }

@@ -16,9 +16,9 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/publicaciones/nuevaPublicacion.html',
             controller: 'publicacionesController'
         })
-        .when('/publicacion/dashboard', {
-            templateUrl: 'views/publicaciones/dashboardPublicacion.html',
-            controller: 'dashboardPublicacionController'
+        .when('/publicacion', {
+            templateUrl: 'views/publicaciones/publicaciones.html',
+            controller: 'publicacionesController'
         })
         .otherwise({
             redirectTo: '/error'
@@ -89,3 +89,14 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
 //            'query': { method:'GET', isArray: false }
 //        });
 //}]);
+
+//$http({
+//    method: 'GET',
+//    url: 'https://www.example.com/api/v1/page',
+//    params: 'limit=10, sort_by=created:desc',
+//    headers: {'Authorization': 'Token token=xxxxYYYYZzzz'}
+//}).success(function(data){
+//    return data
+//}).error(function(){
+//    alert("error");
+//});

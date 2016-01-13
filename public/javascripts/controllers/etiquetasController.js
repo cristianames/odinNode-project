@@ -1,6 +1,4 @@
-app.controller('etiquetasController', ['$scope', 'EtiquetaFactory',
-    function($scope, EtiquetaFactory) {
-
+app.controller('etiquetasController', ['$scope', 'EtiquetaFactory', function($scope, EtiquetaFactory) {
 
        //Etiqueta.query(function(data){
        // $scope.tags = data.items;
@@ -10,12 +8,8 @@ app.controller('etiquetasController', ['$scope', 'EtiquetaFactory',
         EtiquetaFactory.getEtiquetas()
            .success(function (etiqs) {
                $scope.tags = etiqs;
-               console.log("Etiquetas:")
-               console.log(etiqs);
+               console.log("Etiquetas:");
+               console.log($scope.tags)
            })
-
-          //.error(function (pubs) {
-          //   $scope.status = 'Unable to load customer data: ' + error.message;
-          //});
 
 }]);
