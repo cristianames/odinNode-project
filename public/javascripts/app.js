@@ -20,6 +20,10 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/publicaciones/publicaciones.html',
             controller: 'publicacionesController'
         })
+        .when('/equipos/nuevo', {
+            templateUrl: 'views/equipos/equipoNuevo.html',
+            controller: 'equiposController'
+        })
         .otherwise({
             redirectTo: '/error'
         });
@@ -79,6 +83,13 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
     };
 
     return PublicacionesFactory;
+}]);
+
+app.factory('EquipoFactory', ['$http', function($http) {
+
+    var urlBase = '/api/equipo';
+    var EquipoFactory = {};
+    return EquipoFactory;
 }]);
 
 //

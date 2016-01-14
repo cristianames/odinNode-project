@@ -1,5 +1,6 @@
 var etiquetas = require('./endpoints/Etiqueta');
 var publicacion = require('./endpoints/Publicacion');
+var equipo = require('./endpoints/Equipo');
 
 exports.inyectar = function(app, Firebase) {
 
@@ -7,4 +8,6 @@ exports.inyectar = function(app, Firebase) {
 
     etiquetas.inyectar(app, Firebase);
     publicacion.inyectar(app, Firebase);
+    equipo.inyectar(app, Firebase);
+
 }
