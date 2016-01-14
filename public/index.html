@@ -14,7 +14,7 @@
 <body ng-controller="mainController">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header active">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -37,13 +37,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publicaciones <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" ng-repeat="pub in pubs">{{pub.titulo}}</a></li>
+                        <li><a href="#" ng-repeat="pub in pubs">{{pub.data.titulo}}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="/publicaciones">Busqueda avanzada</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Mis publicaciones</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/publicaciones/nueva">Crear nueva</a></li>
+                        <li><a href="/publicaciones/nuevo">Crear nueva</a></li>
                     </ul>
                 </li>
                 <li class="inactive"><a href="#">Configuracion</a></li>

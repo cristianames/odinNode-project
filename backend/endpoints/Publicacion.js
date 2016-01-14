@@ -10,8 +10,10 @@ exports.inyectar = function(app) {
             if(data.exists()){
                 data.forEach(function(childSnapshot){
                     var childValue = childSnapshot.val();
-                    childValue.id = childSnapshot.key();
-                    lista.push(childValue);
+                    var returned = {data: 1,id:1};
+                    returned.data = childValue;
+                    returned.id = childSnapshot.key();
+                    lista.push(returned);
                 });
             }
             res.send(lista);
@@ -21,6 +23,7 @@ exports.inyectar = function(app) {
     app.post('/api/publicacion', function (req, res) {
         var obj = publicaciones.push().set(req.body);
         res.send("Exito!");
+        //TODO Devolver el elemento recien insertado.
     });
 }
 

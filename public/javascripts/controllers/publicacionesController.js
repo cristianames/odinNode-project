@@ -3,6 +3,7 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
     scope.publicacionDescripcion = "Inserte breve descripción.";
     scope.publicacionContenido = "Inserte contenido.";
     scope.publicacionCheckbox = true;  //Si no se pone en true entonces arranca undefined.
+    scope.guardar = "Guardar";
 
     scope.onCancelar = function () {
         location.path("/");
@@ -18,7 +19,7 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
                 '2': { 'nombre': 'OpenShift' }
             }};
         guardar(publicacion);
-        location.path("/");
+        scope.guardar = "Guardando.."
     }
     scope.onDescripcion = function(){
         if(!scope.publicacionDescripcion.localeCompare("Inserte breve descripción.")) scope.publicacionDescripcion = null;
@@ -29,7 +30,9 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
 
     var guardar = function(pub){
         Publicaciones.insertPublicacion(pub)
-            //.success(alert("Publicacion guardad exitosamente!"));
+            .success(function(returned){
+                location.path("/");
+            });
     }
 
 }]);
@@ -38,14 +41,11 @@ app.controller("publicacionesController", ['$scope','PublicacionesFactory','$loc
 
     $scope.dato = "Por ahora nada";
 
-    $scope.publicaciones = {0: {titulo: "Cargando..."}};
+    $scope.publicaciones = {0: {data: {titulo: "Cargando..."}}};
     Publicaciones.getPublicaciones()
         .success(function (publicacioness) {
             $scope.publicaciones = publicacioness;
-        })
-
-    Publicaciones.getTest()
-        .success(function(result){
+            alert("Exito al cargar!");
         })
 
     $scope.abrirPublicacion = function(publicacion){

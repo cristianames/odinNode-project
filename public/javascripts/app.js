@@ -12,7 +12,7 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/etiquetas/etiquetas.html',
             controller: 'etiquetasController'
         })
-        .when('/publicaciones/nueva', {
+        .when('/publicaciones/nuevo', {
             templateUrl: 'views/publicaciones/nuevaPublicacion.html',
             controller: 'nuevaPublicacionController'
         })
@@ -20,6 +20,16 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/publicaciones/publicaciones.html',
             controller: 'publicacionesController'
         })
+        //.when('/publicaciones/:id', {       //TODO LUCAS
+        //    templateUrl: 'ALGUNA.html',
+        //    controller: 'ALGUNController'
+        //})
+        //.when('/publicaciones/:id/editar', {        //TODO LUCAS
+        //    //No se si se puede esa ruta, por los :
+        //    //Otra opcion sería /publicaciones/editar/:id
+        //    templateUrl: 'ALGUNA.html',
+        //    controller: 'ALGUNController'
+        //})
         .when('/equipos/nuevo', {
             templateUrl: 'views/equipos/equipoNuevo.html',
             controller: 'equiposController'
@@ -64,10 +74,6 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
 
     PublicacionesFactory.getPublicaciones = function () {
         return $http.get(urlBase);
-    };
-
-    PublicacionesFactory.getTest = function () {
-        return $http.get(urlBase + '/test');
     };
 
     PublicacionesFactory.getPublicacion = function (id) {
