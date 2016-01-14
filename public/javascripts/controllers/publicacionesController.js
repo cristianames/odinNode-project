@@ -45,7 +45,6 @@ app.controller("publicacionesController", ['$scope','PublicacionesFactory','$loc
     Publicaciones.getPublicaciones()
         .success(function (publicacioness) {
             $scope.publicaciones = publicacioness;
-            alert("Exito al cargar!");
         })
 
     $scope.abrirPublicacion = function(publicacion){

@@ -4,7 +4,7 @@ var publicaciones = new Firebase('https://odingrid.firebaseio.com/publicaciones'
 
 exports.inyectar = function(app) {
 
-    app.get('/api/publicacion', function (req, res) {
+    app.get('/api/v1.0/publicacion', function (req, res) {
         publicaciones.once("value", function (data) {
             var lista = [];
             if(data.exists()){
@@ -20,7 +20,7 @@ exports.inyectar = function(app) {
         });
     });
 
-    app.post('/api/publicacion', function (req, res) {
+    app.post('/api/v1.0/publicacion', function (req, res) {
         var obj = publicaciones.push().set(req.body);
         res.send("Exito!");
         //TODO Devolver el elemento recien insertado.

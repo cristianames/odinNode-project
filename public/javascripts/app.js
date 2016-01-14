@@ -41,7 +41,7 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
 
 app.factory('EtiquetaFactory', ['$http', function($http) {
 
-    var urlBase = '/api/etiqueta';
+    var urlBase = '/api/v1.0/etiqueta';
     var EtiquetaFactory = {};
 
     EtiquetaFactory.getEtiquetas = function () {
@@ -69,7 +69,7 @@ app.factory('EtiquetaFactory', ['$http', function($http) {
 
 app.factory('PublicacionesFactory', ['$http', function($http) {
 
-    var urlBase = '/api/publicacion';
+    var urlBase = '/api/v1.0/publicacion';
     var PublicacionesFactory = {};
 
     PublicacionesFactory.getPublicaciones = function () {
@@ -97,7 +97,7 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
 
 app.factory('EquipoFactory', ['$http', function($http) {
 
-    var urlBase = '/api/equipo';
+    var urlBase = '/api/v1.0/equipo';
     var EquipoFactory = {};
     return EquipoFactory;
 }]);

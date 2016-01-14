@@ -11,8 +11,8 @@ app.controller('etiquetasController', ['$scope', 'EtiquetaFactory',
         EtiquetaFactory.getEtiquetas()
            .success(function (etiqs) {
                $scope.tags = etiqs;
-               console.log("Etiquetas:")
-               console.log(etiqs);
+               //console.log("Etiquetas:")
+               //console.log(etiqs);
            })
 
           //.error(function (pubs) {
