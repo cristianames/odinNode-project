@@ -34,6 +34,16 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
 
 }]);
 
-app.controller("publicacionesController", ['$scope', '$location', function(scope, location){
+app.controller("publicacionesController", ['$scope','PublicacionesFactory','$location',   function($scope, Publicaciones,$location){
 
+    $scope.publicaciones = {0: {titulo: "Cargando..."}};
+    Publicaciones.getPublicaciones()
+        .success(function (publicacioness) {
+            $scope.publicaciones = publicacioness;
+            console.log("Publicaciones:")
+
+        })
+    $scope.abrirPublicacion = function(publicacion){
+        $location.path('/publicaciones/:' + publicacion.id)
+    }
 }]);
