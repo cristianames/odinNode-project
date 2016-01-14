@@ -66,6 +66,10 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
         return $http.get(urlBase);
     };
 
+    PublicacionesFactory.getTest = function () {
+        return $http.get(urlBase + '/test');
+    };
+
     PublicacionesFactory.getPublicacion = function (id) {
         return $http.get(urlBase + '/:' + id);
     };

@@ -29,16 +29,15 @@
         </div>
 
         <div class="col-md-9">
-
             <ul class="list-group-item-info"  ng-repeat="publicacion in publicaciones">
-                <li><a ng-onclick="abrirPublicacion(publicacion)">{{publicacion.titulo}}</a>
-                <a>{{publicacion.id}}</a></li>
+                <li class="btn">
+                    <a ng-click="abrirPublicacion(publicacion)">{{publicacion.titulo}}</a>
+                    <label> <->  {{publicacion.id}}</label>
+                </li>
             </ul>
-
         </div>
 
     </div>
-
 </div>
 <!-- /.container -->
 
