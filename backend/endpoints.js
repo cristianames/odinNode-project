@@ -1,6 +1,7 @@
 var etiquetas = require('./endpoints/Etiquetas');
 var publicaciones = require('./endpoints/Publicaciones');
 var equipos = require('./endpoints/Equipos');
+var usuarios = require('./endpoints/Usuarios');
 
 exports.inyectar = function(app) {
 
@@ -9,5 +10,7 @@ exports.inyectar = function(app) {
     etiquetas.inyectar(app);
     publicaciones.inyectar(app);
     equipos.inyectar(app);
+    usuarios.inyectar(app);
+
 
 }

@@ -34,6 +34,10 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/equipos/equipoNuevo.html',
             controller: 'equiposController'
         })
+        .when('/usuarios/nuevo', {
+            templateUrl: 'views/usuarios/registroUsuario.html',
+            controller: 'usuarioController'
+        })
         .otherwise({
             redirectTo: '/error'
         });
@@ -106,6 +110,19 @@ app.factory('EquiposFactory', ['$http', function($http) {
 
 
     return EquipoFactory;
+}]);
+
+app.factory('UsuariosFactory', ['$http', function($http) {
+
+    var urlBase = '/api/v1.0/usuario';
+    var UsuarioFactory = {};
+
+    UsuarioFactory.insertUsuario = function (user) {
+        return $http.post(urlBase, user);
+    };
+
+
+    return UsuarioFactory;
 }]);
 
 //
