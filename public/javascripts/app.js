@@ -20,10 +20,10 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/publicaciones/publicaciones.html',
             controller: 'publicacionesController'
         })
-        //.when('/publicaciones/:id', {       //TODO LUCAS
-        //    templateUrl: 'ALGUNA.html',
-        //    controller: 'ALGUNController'
-        //})
+        .when('/publicaciones/:id', {       //TODO LUCAS
+            templateUrl: 'views/publicaciones/publicacion.html',
+            controller: 'publicacionController'
+        })
         //.when('/publicaciones/:id/editar', {        //TODO LUCAS
         //    //No se si se puede esa ruta, por los :
         //    //Otra opcion sería /publicaciones/editar/:id

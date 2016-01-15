@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Nueva publicacion</a>
+        </div>
+        <div id="navbar" class="navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="padding-top: 8px;">
+                <button class="btn btn-default" ng-click="onCancelar()">Volver</button>
+                <button class="btn btn-primary" ng-click="">Editar</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+<form role="form" style="width: 40%; margin-bottom: 50px; margin-left: 10%">
+    <table style="width: 100%" >
+        <tr>
+            <td><label >Etiquetas:</label></td>
+            <td><label ng-repeat="etiqueta in pub.etiquetas">{{etiqueta.nombre}};</label></td>
+        </tr>
+        <tr>
+            <td><label for="contributiva" style="text-align: center">Contributiva:</label></td>
+            <td><input type="checkbox" name="switchbox" id="contributiva" ng-model="publicacionCheckbox"
+                       data-off-text="NO" data-on-text="SI" checked="{{pub.contributiva}}" disabled></td>
+        </tr>
+    </table>
+    <label for="descripcion" style="margin-top: 10px"> Descripcion:</label>
+    <textarea id="descripcion" rows="2" cols="100" ng-model="publicacionDescripcion" ng-click="onDescripcion()"
+              ng-init="algo = 1">{{pub.descripcion}}</textarea>
+    <label for="contenido" style="margin-top: 10px"> Desarrollo:</label>
+    <textarea id="contenido" rows="20" cols="120" ng-model="publicacionContenido" ng-click="onContenido()">{{pub.contenido}}</textarea>
+</form>
