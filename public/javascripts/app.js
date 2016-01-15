@@ -95,10 +95,16 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
     return PublicacionesFactory;
 }]);
 
-app.factory('EquipoFactory', ['$http', function($http) {
+app.factory('EquiposFactory', ['$http', function($http) {
 
     var urlBase = '/api/v1.0/equipo';
     var EquipoFactory = {};
+
+    EquipoFactory.insertEquipo = function (equipo) {
+        return $http.post(urlBase, equipo);
+    };
+
+
     return EquipoFactory;
 }]);
 

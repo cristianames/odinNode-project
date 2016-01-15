@@ -1,6 +1,6 @@
-The OpenShift `nodejs` cartridge documentation can be found at:
+(The OpenShift `nodejs` cartridge documentation can be found at:
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
+http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs) deprecated
 
 INSTRUCCIONES
 =============
@@ -27,4 +27,4 @@ Node interpreter: Ruta absoluta hasta node.exe, ependiendo de tu instalacion de 
 
 Working directory: Ruta absoluta hasta la raiz del proyecto.
 
-JavaScript file: bin\www
+JavaScript file: server.js

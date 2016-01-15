@@ -1,4 +1,4 @@
-app.controller("mainController", ['$scope', 'PublicacionesFactory', function($scope, Publicaciones){
+app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFactory', function($scope, Publicaciones,Equipos){
     $scope.pubs = {0: {data: {titulo: "Cargando..."}}};
     Publicaciones.getPublicaciones()
         .success(function (pubs) {
@@ -6,4 +6,17 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory', function($sc
             //console.log("Publicaciones-Index:")
             //console.log(pubs);
         })
+
+
+    $scope.crearEquipoMock = function(){
+        var equipo = {
+            'nombre':'equipoLoco',
+            };
+        Equipos.insertEquipo(equipo)
+            .success(function(returned){
+                alert("equipoCreado");
+            });
+    }
+
+
 }]);
