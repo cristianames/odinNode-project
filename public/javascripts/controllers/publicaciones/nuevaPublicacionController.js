@@ -1,4 +1,3 @@
-//SI DESGLOSAN ESTE ARCHIVO EN VARIOS JS, PRIMERO CREEN UNA CARPETA QUE LOS CONTENGA A TODOS
 app.controller("nuevaPublicacionController", ['$scope', '$location', 'PublicacionesFactory', function(scope, location, Publicaciones){
     scope.publicacionDescripcion = "Inserte breve descripción.";
     scope.publicacionContenido = "Inserte contenido.";
@@ -35,21 +34,4 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
             });
     }
 
-}]);
-
-app.controller("publicacionesController", ['$scope','PublicacionesFactory','$location',   function($scope, Publicaciones,$location){
-
-    $scope.dato = "Por ahora nada";
-
-    $scope.publicaciones = {0: {data: {titulo: "Cargando..."}}};
-    Publicaciones.getPublicaciones()
-        .success(function (publicacioness) {
-            $scope.publicaciones = publicacioness;
-        })
-
-    $scope.abrirPublicacion = function(publicacion){
-        console.log("Objeto Pub:");
-        console.log(publicacion.id);
-        $location.path('/publicaciones/:' + publicacion.id)
-    }
 }]);
