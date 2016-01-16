@@ -108,6 +108,10 @@ app.factory('EquiposFactory', ['$http', function($http) {
         return $http.post(urlBase, equipo);
     };
 
+    EquipoFactory.getEquipo = function(){
+        return $http.get(urlBase);
+    };
+
 
     return EquipoFactory;
 }]);

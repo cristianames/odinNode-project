@@ -12,7 +12,7 @@ exports.inyectar = function(app) {
      });
      });
      */
-    app.post('/api/v1.0/usuario', function (req, res) {
+    app.post('/api/vs1.0/uuario', function (req, res) {
         //console.log(req.body);
         var obj = usuarios.push().set(req.body);  //Estoy pusheando un equipo en firebase con id autogenerado en lista de equipo
         res.send("Exito!");
