@@ -5,11 +5,12 @@ app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', f
     }
     scope.onGuardar = function(){
         var usuario = {
-            'nombreUsuario':scope.usuario,
-            'contraseña':scope.usuarioContrasenia,
-            'nombre':scope.usuarioNombre,
-            'apellido':scope.usuarioApellido,
+            'nombreUsuario':scope.formData.usuario,
+            'contraseña':scope.formData.usuarioContrasenia,
+            'nombre':scope.formData.usuarioNombre,
+            'apellido':scope.formData.usuarioApellido,
             };
+
         guardar(usuario);
         scope.guardar = "Guardando.."
     }

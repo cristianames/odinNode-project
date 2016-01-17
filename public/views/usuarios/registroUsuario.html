@@ -8,32 +8,35 @@
             </ul>
             <ul class="nav navbar-nav navbar-right" style="padding-top: 8px;">
                 <button class="btn btn-default" ng-click="onCancelar()">Cancelar</button>
-                <button class="btn btn-primary" ng-click="onGuardar()">Guardar</button>
+                <button class="btn btn-primary" ng-click="onGuardar()" ng-disabled="!registroForm.$valid">Guardar </button>
             </ul>
         </div>
     </div>
 </nav>
-<form class="container-fluid" role="form" style="width: 40%; margin-bottom: 50px; margin-left: 10%">
+<form name="registroForm" class="container-fluid" role="form" style="width: 40%; margin-bottom: 50px; margin-left: 10%">
     <table style="width: 100%" >
         <tr>
             <td><label for="usuario">Nombre Usuario:</label></td>
-            <td><input type="text" class="form-control" id="usuario" ng-model="usuario" style="width: 300px"></td>
+            <td><input type="text" class="form-control" id="usuario" name="usuario" placeholder="usuario" ng-model="formData.usuario" required ng-class="{ error: exampleForm.email.$error.required && !exampleForm.$pristin}" style="width: 300px"></td>
+            <td><span ng-show="!registroForm.$pristine && registroForm.usuario.$error.required" style="width: 300px">Falta Nombre</span></td>
         </tr>
         <tr>
             <td><label for="contrasenia">Contraseña:</label></td>
-            <td><input type="text" class="form-control" id="contrasenia" ng-model="usuarioContrasenia" style="width: 300px"></td>
+            <td><input type="text" class="form-control" id="contrasenia" name="contrasenia" ng-model="formData.usuarioContrasenia" required style="width: 300px"></td>
+            <td><span ng-show="!registroForm.$pristine && registroForm.contrasenia.$error.required" style="width: 300px">debe ingresar una contraseña </span></td>
         </tr>
         <tr>
             <td><label for="repContraseña">Repetir Contraseña:</label></td>
-            <td><input type="text" class="form-control" id="repContraseña" style="width: 300px"></td>
+            <td><input type="text" class="form-control" id="repContraseña" name="repContrasenia" ng-model="formData.repContrasenia" required style="width: 300px"></td>
+            <td><span ng-show="!registroForm.$pristine && registroForm.repContrasenia.$error.required && (registroForm.contrasenia != registroForm.repContrasenia) " style="width: 300px">la contraseña no coinciden </span> </td>
         </tr>
         <tr>
             <td><label for="nombre">Nombre:</label></td>
-            <td><input type="text" class="form-control" id="nombre" ng-model="usuarioNombre" style="width: 300px"></td>
+            <td><input type="text" class="form-control" id="nombre" ng-model="formData.usuarioNombre" style="width: 300px"></td>
         </tr>
         <tr>
             <td><label for="apellido">Apellido:</label></td>
-            <td><input type="text" class="form-control" id="apellido" ng-model="usuarioApellido" style="width: 300px"></td>
+            <td><input type="text" class="form-control" id="apellido" ng-model="formData.usuarioApellido" style="width: 300px"></td>
         </tr>
 
     </table>
