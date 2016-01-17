@@ -38,6 +38,10 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/usuarios/registroUsuario.html',
             controller: 'usuarioController'
         })
+        .when('/usuarios/login', {
+            templateUrl: 'views/usuarios/loggin.html',
+            controller: 'usuarioController'
+        })
         .otherwise({
             redirectTo: '/error'
         });
