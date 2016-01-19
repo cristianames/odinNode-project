@@ -8,9 +8,9 @@ app.controller("publicacionesController", ['$scope','PublicacionesFactory','$loc
             $scope.publicaciones = publicacioness;
         })
 
-    $scope.abrirPublicacion = function(publicacion){
+    $scope.abrirPublicacion = function(publicacion){ //NO CONVIENE RECIBIR SOLO EL ID? ES TRAER INFO AL PEDO
         console.log("Objeto Pub:");
         console.log(publicacion.id);
-        $location.path('/publicaciones/:' + publicacion.id)
+        $location.path('/publicaciones/' + publicacion.id)
     }
 }]);

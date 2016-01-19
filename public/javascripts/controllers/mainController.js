@@ -3,8 +3,8 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
     Publicaciones.getPublicaciones()
         .success(function (pubs) {
             $scope.pubs = pubs;
-            //console.log("Publicaciones-Index:")
-            //console.log(pubs);
+            console.log("Publicaciones-Index:")
+            console.log(pubs);
         })
 
 
@@ -20,3 +20,5 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
 
 
 }]);
+
+
