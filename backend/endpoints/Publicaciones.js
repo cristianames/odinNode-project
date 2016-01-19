@@ -25,6 +25,20 @@ exports.inyectar = function(app) {
         res.send("Exito!");
         //TODO Devolver el elemento recien insertado.
     });
+
+
+    app.get('/api/v1.0/publicacion/:id', function (req, res) {
+        publicaciones.child(req.params.id).once("value", function(data) {
+            var pub = {data: 1,id:1};
+            pub.data = data.val();
+            pub.id = data.key();
+            res.send(pub);
+        });
+    });
+
+
+
+
 }
 
 //app.get('/api/publicacion', function (req, res) {
@@ -33,3 +47,4 @@ exports.inyectar = function(app) {
 //        res.send(lista);
 //    });
 //});
+

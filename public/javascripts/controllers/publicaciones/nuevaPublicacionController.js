@@ -10,7 +10,7 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
     scope.onGuardar = function(){
         var publicacion = {
             'titulo':scope.publicacionTitulo,
-            'contenido':scope.publicacionDescripcion,
+            'descripcion':scope.publicacionDescripcion,
             'desarrollo':scope.publicacionContenido,
             'contributiva':scope.publicacionCheckbox,
             'etiquetas': {
