@@ -17,6 +17,14 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
                 alert("equipoCreado");
             });
     }
+    
+    Equipos.getEquipo()
+        .success(function (equipos) {
+                $scope.equipos = equipos;
+            //console.log("Publicaciones-Index:")
+            //console.log(pubs);
+
+        })
 
 
 }]);
