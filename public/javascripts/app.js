@@ -85,7 +85,7 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
     };
 
     PublicacionesFactory.getPublicacion = function (id) {
-        return $http.get(urlBase + '/:' + id);
+        return $http.get(urlBase + '/:' + id);// /api/v1.0/publicacion/:-zffsgtdfr2353tgf'
     };
 
     PublicacionesFactory.insertPublicacion = function (pub) {

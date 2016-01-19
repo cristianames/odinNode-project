@@ -30,8 +30,14 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
     var guardar = function(pub){
         Publicaciones.insertPublicacion(pub)
             .success(function(returned){
+                console.log("Returned is:");
+                console.log(returned);
                 location.path("/");
-            });
+            })
+            .error(function(returned){
+                scope.guardar = "Error!"
+                //TODO Hacer que espere un rato y vuelva a estar normal.
+            })
     }
 
 }]);

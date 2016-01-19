@@ -5,6 +5,8 @@ var publicaciones = new Firebase('https://odingrid.firebaseio.com/publicaciones'
 exports.inyectar = function(app) {
 
     app.get('/api/v1.0/publicacion', function (req, res) {
+        //TODO Fijarte de trabajar con childAdded
+        //https://www.firebase.com/docs/web/guide/structuring-data.html
         publicaciones.once("value", function (data) {
             var lista = [];
             if(data.exists()){
@@ -21,8 +23,16 @@ exports.inyectar = function(app) {
     });
 
     app.post('/api/v1.0/publicacion', function (req, res) {
-        var obj = publicaciones.push().set(req.body);
-        res.send("Exito!");
+        var obj = publicaciones.push()
+            obj.set(req.body);
+        obj.once("value", function(obj) {
+            var valor = data.val();
+            console.log(valor);
+            res.send(valor);
+        });
+
+        //res.send("Exito");
+
         //TODO Devolver el elemento recien insertado.
     });
 }
