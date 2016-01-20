@@ -34,6 +34,10 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/equipos/equipoNuevo.html',
             controller: 'equiposController'
         })
+        .when('/equipos/dashboard', {
+            templateUrl: 'views/equipos/dashboard.html',
+            controller: 'dashboardController'
+        })
         .when('/usuarios/nuevo', {
             templateUrl: 'views/usuarios/registroUsuario.html',
             controller: 'usuarioController'
