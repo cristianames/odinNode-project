@@ -3,7 +3,14 @@ var Usuario = function(nombre){
     //this.usuario = user.usuario;
     //this.nombre = user.nombre;
     //this.apellido = user.apellido;
+
+
+
+
 }
+
+
+
 
 module.exports = Usuario;
 

@@ -3,17 +3,14 @@ var Firebase = require("firebase");
 var publicaciones = new Firebase('https://odingrid.firebaseio.com/publicaciones');
 
 exports.inyectar = function(app) {
-
     app.get('/api/v1.0/publicacion', function (req, res) {
-        publicaciones.once("value", function (data) {
-            var lista = [];
-            if(data.exists()){
-                data.forEach(function(childSnapshot){
-                    var childValue = childSnapshot.val();
-                    var returned = {data: 1,id:1};
-                    returned.data = childValue;
-                    returned.id = childSnapshot.key();
-                    lista.push(returned);
+        var lista = [];
+        var itemLista;
+        publicaciones.once("value", function (snapshot) {
+            if(snapshot.exists()){
+                snapshot.forEach(function(childSnapshot){
+                    itemLista = {data: {titulo: childSnapshot.val().titulo}, id: childSnapshot.key()};
+                    lista.push(itemLista);
                 });
             }
             res.send(lista);
@@ -21,15 +18,25 @@ exports.inyectar = function(app) {
     });
 
     app.post('/api/v1.0/publicacion', function (req, res) {
-        var obj = publicaciones.push().set(req.body);
-        res.send("Exito!");
-        //TODO Devolver el elemento recien insertado.
+        var pusheable = publicaciones.push()
+        pusheable.set(req.body);
+        pusheable.once("value", function(snapshot) {
+            res.send(empaquetar(snapshot));
+        });
+    });
+
+    app.get('/api/v1.0/publicacion/:id', function (req, res) {
+        publicaciones.child(req.params.id).once("value", function(snapshot) {
+            res.send(empaquetar(snapshot));
+        });
     });
 }
 
-//app.get('/api/publicacion', function (req, res) {
-//    publicaciones.once("value", function (data) {
-//        var lista = data.val();
-//        res.send(lista);
-//    });
-//});
+var empaquetar = function(snapshot){
+    var returned = {data: 1,id:1};
+    console.log("Antes del val");
+    returned.data = snapshot.val();
+    console.log("Despues del val");
+    returned.id = snapshot.key();
+    return returned;
+}

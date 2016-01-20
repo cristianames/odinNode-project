@@ -3,8 +3,8 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
     Publicaciones.getPublicaciones()
         .success(function (pubs) {
             $scope.pubs = pubs;
-            //console.log("Publicaciones-Index:")
-            //console.log(pubs);
+            console.log("Publicaciones-Index:")
+            console.log(pubs);
         })
 
 
@@ -17,6 +17,16 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
                 alert("equipoCreado");
             });
     }
+    
+    Equipos.getEquipo()
+        .success(function (equipos) {
+                $scope.equipos = equipos;
+            //console.log("Publicaciones-Index:")
+            //console.log(pubs);
+
+        })
 
 
 }]);
+
+
