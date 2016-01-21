@@ -18,13 +18,13 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
             });
     }
     
-    Equipos.getEquipo()
-        .success(function (equipos) {
-                $scope.equipos = equipos;
-            //console.log("Publicaciones-Index:")
-            //console.log(pubs);
-
-        })
+    //Equipos.getEquipo()
+    //    .success(function (equipos) {
+    //            $scope.equipos = equipos;
+    //        //console.log("Publicaciones-Index:")
+    //        //console.log(pubs);
+    //
+    //    })
 
 
 }]);

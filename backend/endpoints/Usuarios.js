@@ -1,9 +1,14 @@
 var Usuario = require('../modelo/Usuario');
 var Firebase = require("firebase");
 var usuarios = new Firebase('https://odingrid.firebaseio.com/usuarios');
-var firebase = new Firebase('https://odingrid.firebaseio.com');
 
 exports.inyectar = function(app) {
+    app.get('/api/v1.0/usuario', function (req, res) {
+        usuarios.on("value", function(snapshot) {
+            console.log(snapshot.val());
+            res.send(snapshot.val());
+        });
+    });
 
     /*    app.get('/api/v1.0/equipo', function (req, res) {
 
@@ -27,7 +32,6 @@ exports.inyectar = function(app) {
         alert("se creo usuario");
 
     });
-
 
 
 }

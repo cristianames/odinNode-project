@@ -1,0 +1,35 @@
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+
+        <ul class="list-group" style="margin:15px;">
+            <li class="list-group-item"><h2>Dashboard</h2>{{equipo.nombre}}</li>
+            <li class="list-group-item">
+                <a href="#" ng-click="onBtnPropuestas()">Propuestas</a></li>
+            <li class="list-group-item">
+                <a href="#" ng-click="onBtnIntegrantes()">Integrantes</a></li>
+            <li class="list-group-item">
+                <a href="#" ng-click="onBtnConfiguracion()">Configuracion</a></li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <a href="#menu-toggle" class="btn btn-default"
+           id="menu-toggle" style="float:left">Toggle Menu</a>
+
+        <div class="container-fluid">
+            <div class="jumbotron" ng-include="pagination.url"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>

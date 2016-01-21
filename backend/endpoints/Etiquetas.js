@@ -21,4 +21,4 @@ exports.inyectar = function(app) {
         //    ]
         //});
     });
-}
+};

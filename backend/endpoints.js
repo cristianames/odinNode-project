@@ -7,9 +7,9 @@ exports.inyectar = function(app) {
 
     //Agregar los proximos endpoints en la carpeta endpoints siguiendo el esquema de los otros.
 
+    equipos.inyectar(app);
     etiquetas.inyectar(app);
     publicaciones.inyectar(app);
-    equipos.inyectar(app);
     usuarios.inyectar(app);
 
 

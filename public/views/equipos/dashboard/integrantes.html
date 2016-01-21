@@ -1,0 +1,20 @@
+<h2>Integrantes</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th style="text-align: center; ">Nombre de usuario</th>
+    </tr>
+    <tr ng-repeat="integrante in equipo.integrantes" style="text-align: center; ">
+        <td>{{integrante.username}}</td>
+        <td style="width: 70px;">
+            <button type="button" class="btn btn-danger"
+                    ng-click="quitarIntegrante(integrante)">-</button></td>
+    </tr>
+</table>
+
+<label for="mySelect">Agregar nuevo integrante:</label>
+<select name="mySelect" id="mySelect"
+        ng-model="$parent.usuarioSeleccionado"
+        ng-options="usuario.username for usuario in usuarios"></select>
+
+<a href="#" ng-click="onBtnAgregarIntegrante()">Agregar</a>

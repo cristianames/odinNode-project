@@ -1,16 +1,12 @@
-var Usuario = function(nombre){
-    this.nombre = nombre;
+var Usuario = function(username){
+    if (username == undefined) throw "Nombre no especificado";
+
+    this.username = username;
     //this.usuario = user.usuario;
     //this.nombre = user.nombre;
     //this.apellido = user.apellido;
-
-
-
-
 }
 
-
-
-
-module.exports = Usuario;
-
+exports.create = function(bodyReq) {
+    return new Usuario(bodyReq.username);
+};

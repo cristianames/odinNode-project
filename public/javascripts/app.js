@@ -34,8 +34,8 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/equipos/equipoNuevo.html',
             controller: 'equiposController'
         })
-        .when('/equipos/dashboard', {
-            templateUrl: 'views/equipos/dashboard.html',
+        .when('/equipos/:id/dashboard', {
+            templateUrl: 'views/equipos/dashboard/dashboard.html',
             controller: 'dashboardController'
         })
         .when('/usuarios/nuevo', {
@@ -109,17 +109,30 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
 
 app.factory('EquiposFactory', ['$http', function($http) {
 
-    var urlBase = '/api/v1.0/equipo';
+    var urlBase = '/api/equipos';
     var EquipoFactory = {};
 
     EquipoFactory.insertEquipo = function (equipo) {
         return $http.post(urlBase, equipo);
     };
 
-    EquipoFactory.getEquipo = function(){
+    EquipoFactory.getEquipos = function(){
         return $http.get(urlBase);
     };
 
+    EquipoFactory.getEquipo = function(id, callback) {
+        $http.get(urlBase + '/' + id).then(callback);
+    };
+
+    EquipoFactory.insertIntegrante = function (id, integrante, callback, errorCallback) {
+        $http.post(urlBase + '/' + id + '/integrantes', integrante)
+            .then(callback, errorCallback);
+    }
+
+    EquipoFactory.quitarIntegrante = function (id, username, callback, errorCallback) {
+        $http.delete(urlBase + '/' + id + '/integrantes/' + username)
+            .then(callback, errorCallback);
+    }
 
     return EquipoFactory;
 }]);
@@ -133,6 +146,9 @@ app.factory('UsuariosFactory', ['$http', function($http) {
         return $http.post(urlBase, user);
     };
 
+    UsuarioFactory.getUsuarios = function (callback) {
+        $http.get(urlBase).then(callback);
+    }
 
     return UsuarioFactory;
 }]);

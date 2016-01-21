@@ -61,4 +61,29 @@ module.exports = function(instancia) {
         //console.log(routes);
         //instancia.app.use('/', routes);
     }
+
+    Array.prototype.contains = function(elem) {
+        for (var i in this) {
+            if (this[i] == elem) return true;
+        }
+        return false;
+    }
+
+    Array.prototype.contains = function(elem, booleanF) {
+        for (var i in this) {
+            if (booleanF(this[i],elem)) return true;
+        }
+        return false;
+    }
+
+    Array.prototype.remove = function(booleanF) {
+        for (var i in this) {
+            if (booleanF(this[i])) {
+                this.splice(i,1);
+                return;
+            }
+        }
+
+        throw 'Ningun elemento fue eliminado con ese criterio';
+    }
 }
