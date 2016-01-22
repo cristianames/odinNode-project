@@ -3,21 +3,20 @@ var Firebase = require("firebase");
 var usuarios = new Firebase('https://odingrid.firebaseio.com/usuarios');
 
 exports.inyectar = function(app) {
-    app.get('/api/v1.0/usuario', function (req, res) {
-        usuarios.on("value", function(snapshot) {
-            console.log(snapshot.val());
-            res.send(snapshot.val());
+
+      app.get('/api/v1.0/usuario', function (req, res) {
+        var lista = [];
+        var itemLista;
+        usuarios.once("value", function (snapshot) {
+            if(snapshot.exists()){
+                snapshot.forEach(function(childSnapshot){
+                    itemLista = {data: {nombreUsuario: childSnapshot.val().nombreUsuario}, id: childSnapshot.key()};
+                    lista.push(itemLista);
+                });
+            }
+            res.send(lista);
         });
-    });
-
-    /*    app.get('/api/v1.0/equipo', function (req, res) {
-
-     publicaciones.once("value", function (data) {
-     var lista = data.val();
-     res.send(lista);
-     });
-     });
-     */
+      });
 
     var crearUsuario = function(user){
         console.log("entre a crear usuario");
@@ -32,6 +31,7 @@ exports.inyectar = function(app) {
         alert("se creo usuario");
 
     });
+
 
 
 }

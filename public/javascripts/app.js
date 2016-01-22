@@ -142,6 +142,11 @@ app.factory('UsuariosFactory', ['$http', function($http) {
     var urlBase = '/api/v1.0/usuario';
     var UsuarioFactory = {};
 
+
+    EquipoFactory.getUsuarios = function(){
+        return $http.get(urlBase);
+    };
+
     UsuarioFactory.insertUsuario = function (user) {
         return $http.post(urlBase, user);
     };
