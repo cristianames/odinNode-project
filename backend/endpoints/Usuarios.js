@@ -10,7 +10,13 @@ exports.inyectar = function(app) {
         usuarios.once("value", function (snapshot) {
             if(snapshot.exists()){
                 snapshot.forEach(function(childSnapshot){
-                    itemLista = {data: {nombreUsuario: childSnapshot.val().nombreUsuario}, id: childSnapshot.key()};
+                    itemLista = {
+                        data: {
+                            nombreUsuario: childSnapshot.val().nombreUsuario,
+                        },
+                        username: childSnapshot.val().nombreUsuario,
+                        id: childSnapshot.key()
+                    };
                     lista.push(itemLista);
                 });
             }
