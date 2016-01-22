@@ -17,6 +17,16 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
                 alert("equipoCreado");
             });
     }
+
+    Equipos.getEquipos(function (res) {
+        $scope.equipos = [];
+        for (var i in res.data) {
+            $scope.equipos.push({
+                nombre: res.data[i].nombreEquipo,
+                id: i
+            });
+        }
+    })
     
     //Equipos.getEquipo()
     //    .success(function (equipos) {

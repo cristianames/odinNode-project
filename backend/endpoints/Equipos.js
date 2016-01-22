@@ -13,7 +13,7 @@ exports.inyectar = function(app) {
         });
     });
 
-    app.get('/api/v1.0/equipos', function (req, res) {
+    app.get('/api/equipos', function (req, res) {
         //console.log(equipos);
         equipos.once("value", function(snapshot) {
             console.log(snapshot.val());

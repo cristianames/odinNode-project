@@ -7,8 +7,17 @@ app.controller("dashboardController", function($scope, EquiposFactory, UsuariosF
             $scope.equipo.integrantes = [];
         }
 
-        console.log(res.data);
+        //console.log(res.data);
     });
+
+    //EquiposFactory.getEquipos(function (res) {
+    //    console.log(res.data);
+    //
+    //    for (var i in res.data) {
+    //        console.log(i);
+    //        console.log(res.data[i]);
+    //    }
+    //})
 
     var pagination = [
         { name: 'inicio', url: 'views/equipos/dashboard/inicio.html'},
@@ -27,7 +36,7 @@ app.controller("dashboardController", function($scope, EquiposFactory, UsuariosF
         $scope.pagination = pagination[2];
         UsuariosFactory.getUsuarios(function(res) {
             $scope.usuarios = res.data;
-            console.log(res.data);
+            //console.log(res.data);
         });
     };
 
@@ -39,11 +48,11 @@ app.controller("dashboardController", function($scope, EquiposFactory, UsuariosF
         //console.log($scope.usuarioSeleccionado);
         EquiposFactory.insertIntegrante($routeParams.id, $scope.usuarioSeleccionado,
             function(res) {
-                console.log(res.data);
+                //console.log(res.data);
                 $scope.equipo.integrantes.push(res.data);
             }, function (res) {
                 alert(res.data);
-                console.log(res);
+                //console.log(res);
             });
     };
 
