@@ -28,7 +28,7 @@
         <tr>
             <td><label for="repContraseña">Repetir Contraseña:</label></td>
             <td><input type="text" class="form-control" id="repContraseña" name="repContrasenia" ng-model="formData.repContrasenia" required style="width: 300px"></td>
-            <td><span ng-show="!registroForm.$pristine && registroForm.repContrasenia.$error.required && (registroForm.contrasenia != registroForm.repContrasenia) " style="width: 300px">no coinciden </span> </td>
+            <td><span ng-show="formData.usuarioContrasenia != formData.repContrasenia" style="width: 300px">no coinciden </span> </td>
         </tr>
         <tr>
             <td><label for="email">Email:</label></td>
