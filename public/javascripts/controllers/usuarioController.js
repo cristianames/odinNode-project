@@ -12,8 +12,8 @@ app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', f
     var guardar = function(usuario){
         var usuario = {
             'uid': scope.uid,
-            'nombreUsuario':scope.formData.usuario,
-            'contraseña':scope.formData.usuarioContrasenia,
+            'username':scope.formData.usuario,
+            'password':scope.formData.usuarioContrasenia,
             'email':scope.formData.usuarioEmail,
             'nombre':scope.formData.usuarioNombre,
             'apellido':scope.formData.usuarioApellido,
