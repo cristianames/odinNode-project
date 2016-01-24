@@ -1,4 +1,5 @@
 var Etiqueta = require('../modelo/Etiqueta');
+var Publicacion = require('../modelo/Publicacion');
 var Firebase = require("firebase");
 var publicaciones = new Firebase('https://odingrid.firebaseio.com/publicaciones');
 
@@ -31,8 +32,6 @@ exports.inyectar = function(app) {
         publicaciones.once("value", function(snap) {
             res.send(snap.val());
         });
-
-
     });
 
     app.get('/api/v1.0/publicacion/:id', function (req, res) {
@@ -40,6 +39,12 @@ exports.inyectar = function(app) {
             res.send(empaquetar(snapshot));
         });
     });
+
+    app.put('/api/v1.0/publicacion/:id', function (req, res) {
+        var pub = Publicacion.create(req.body);
+        publicaciones.child(req.params.id).update(pub);
+    });
+
 }
 
 var empaquetar = function(snapshot){

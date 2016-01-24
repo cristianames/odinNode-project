@@ -8,7 +8,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right" style="padding-top: 8px;">
                 <button class="btn btn-default" ng-click="onCancelar()">Volver</button>
-                <button class="btn btn-primary" ng-click="">Editar</button>
+                <button class="btn btn-primary" ng-click="onEditar()">Editar</button>
             </ul>
         </div>
     </div>
@@ -26,8 +26,8 @@
         </tr>
     </table>
     <label for="descripcion" style="margin-top: 10px"> Descripcion:</label>
-    <textarea id="descripcion" rows="2" cols="100" ng-model="publicacionDescripcion" ng-click="onDescripcion()"
+    <textarea id="descripcion" rows="2" cols="100" ng-model="publicacionDescripcion" disabled
               ng-init="algo = 1">{{pub.data.descripcion}}</textarea>
     <label for="contenido" style="margin-top: 10px"> Desarrollo:</label>
-    <textarea id="contenido" rows="20" cols="120" ng-model="publicacionDesarrollo" ng-click="onContenido()"></textarea>
+    <textarea id="contenido" rows="20" cols="120" ng-model="publicacionDesarrollo" disabled></textarea>
 </form>
