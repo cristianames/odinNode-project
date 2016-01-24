@@ -25,6 +25,16 @@ exports.inyectar = function(app) {
         });
     });
 
+    app.post('/api/publicacion', function (req, res) {
+        var pusheable = publicaciones.push()
+        pusheable.set(req.body);
+        publicaciones.once("value", function(snap) {
+            res.send(snap.val());
+        });
+
+
+    });
+
     app.get('/api/v1.0/publicacion/:id', function (req, res) {
         publicaciones.child(req.params.id).once("value", function(snapshot) {
             res.send(empaquetar(snapshot));
