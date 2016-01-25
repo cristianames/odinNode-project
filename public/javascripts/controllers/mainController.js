@@ -17,12 +17,13 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
             });
     }
 
-    Equipos.getEquipos(function (res) {
-        $scope.equipos = [];
-        for (var i in res.data) {
-            $scope.equipos.push({
-                nombre: res.data[i].nombre,
-                id: i
+    Equipos.getEquipos()
+        .success(function (res) {
+            $scope.equipos = [];
+            for (var i in res.data) {
+                $scope.equipos.push({
+                    nombre: res.data[i].nombre,
+                    id: i
             });
         }
     })

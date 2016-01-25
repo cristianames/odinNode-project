@@ -114,8 +114,8 @@ app.factory('EquiposFactory', ['$http', function($http) {
         return $http.post(urlBase, equipo);
     };
 
-    EquipoFactory.getEquipos = function(callback, errorCallback){
-        return $http.get(urlBase).then(callback, errorCallback);
+    EquipoFactory.getEquipos = function(){
+        return $http.get(urlBase).then();
     };
 
     EquipoFactory.getEquipo = function(id, callback) {
