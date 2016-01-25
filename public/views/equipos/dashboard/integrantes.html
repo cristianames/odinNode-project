@@ -1,9 +1,12 @@
-<h2>Integrantes</h2>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Integrantes</a>
+        </div>
+    </div>
+</nav>
 
 <table class="table table-striped">
-    <tr>
-        <th style="text-align: center; ">Nombre de usuario</th>
-    </tr>
     <tr ng-repeat="integrante in equipo.integrantes" style="text-align: center; ">
         <td>{{integrante.username}}</td>
         <td style="width: 70px;">
