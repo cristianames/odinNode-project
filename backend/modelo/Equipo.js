@@ -5,9 +5,8 @@ var Equipo = function(nombre){
     if (nombre == undefined) throw "Nombre no especificado";
 
     this.nombre = nombre;
-    this.integrantes = [];
 }
 
 exports.create = function(bodyReq) {
-    return new Equipo(bodyReq.nombreEquipo);
+    return new Equipo(bodyReq.nombre);
 };
