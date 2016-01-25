@@ -60,7 +60,7 @@
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                         <input  type="password" class="form-control" name="password" ng-model="logPassword" placeholder="Password">
                     </div>
-                    <span ng-show="errorPass" class="help-block">Password error</span>
+                    <span ng-show="errorPass" class="help-block">{{errorFirebase}}</span>
 
                     <button class="btn btn-lg btn-primary btn-block" ng-click="loguinUsuario()">Login</button>
                 </form>

@@ -5,6 +5,7 @@ var fAuthData;
 app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', function(scope, location, Usuarios){
 
     scope.errorPass=false;
+    //scope.errorFirebase= "me mostre";
 
     scope.onCancelar = function () {
         location.path("/");
@@ -55,7 +56,10 @@ app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', f
             if (error) {
                 //funcionLoca();
                 fError = error;
+                scope.$apply(function(){
                 scope.errorPass=true;
+                scope.errorFirebase= "me mostre";
+                scope.$broadcast('REFRESH');});
                 console.log(scope.errorPass);
                 console.log("Login Failed!", error);
             } else {
