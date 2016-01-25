@@ -1,8 +1,9 @@
 app.controller("nuevaPublicacionController", ['$scope', '$location', 'PublicacionesFactory', function(scope, location, Publicaciones){
     scope.publicacionDescripcion = "Inserte breve descripción.";
-    scope.publicacionContenido = "Inserte contenido.";
+    scope.publicacionDesarrollo = "Inserte contenido.";
     scope.publicacionCheckbox = true;  //Si no se pone en true entonces arranca undefined.
-    scope.guardar = "Guardar";
+    scope.nombreBtn = "Guardar";
+    scope.tituloNavbar = "Nueva publicacion";
 
     scope.onCancelar = function () {
         location.path("/");
@@ -11,20 +12,20 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
         var publicacion = {
             'titulo':scope.publicacionTitulo,
             'descripcion':scope.publicacionDescripcion,
-            'desarrollo':scope.publicacionContenido,
+            'desarrollo':scope.publicacionDesarrollo,
             'contributiva':scope.publicacionCheckbox,
             'etiquetas': {
                 '1': { 'nombre': 'GoogleMaps' },
                 '2': { 'nombre': 'OpenShift' }
             }};
         guardar(publicacion);
-        scope.guardar = "Guardando.."
+        scope.nombreBtn = "Guardando.."
     }
     scope.onDescripcion = function(){
         if(!scope.publicacionDescripcion.localeCompare("Inserte breve descripción.")) scope.publicacionDescripcion = null;
     }
     scope.onContenido = function(){
-        if(!scope.publicacionContenido.localeCompare("Inserte contenido.")) scope.publicacionContenido = null;
+        if(!scope.publicacionDesarrollo.localeCompare("Inserte contenido.")) scope.publicacionDesarrollo = null;
     }
 
     var guardar = function(pub){

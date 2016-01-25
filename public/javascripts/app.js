@@ -20,16 +20,14 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/publicaciones/publicaciones.html',
             controller: 'publicacionesController'
         })
-        .when('/publicaciones/:id', {       //TODO LUCAS
+        .when('/publicaciones/:id', {
             templateUrl: 'views/publicaciones/publicacion.html',
             controller: 'publicacionController'
         })
-        //.when('/publicaciones/:id/editar', {        //TODO LUCAS
-        //    //No se si se puede esa ruta, por los :
-        //    //Otra opcion sería /publicaciones/editar/:id
-        //    templateUrl: 'ALGUNA.html',
-        //    controller: 'ALGUNController'
-        //})
+        .when('/publicaciones/:id/editar', {
+            templateUrl: 'views/publicaciones/nuevaPublicacion.html',
+            controller: 'editarPublicacionController'
+        })
         .when('/equipos/nuevo', {
             templateUrl: 'views/equipos/equipoNuevo.html',
             controller: 'equiposController'
@@ -96,12 +94,12 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
         return $http.post(urlBase, pub);
     };
 
-    PublicacionesFactory.updatePublicacion = function (pub) {
-        return $http.put(urlBase + '/:' + pub.ID, pub)
+    PublicacionesFactory.updatePublicacion = function (id, pub) {
+        return $http.put(urlBase + '/' + id, pub)
     };
 
     PublicacionesFactory.deletePublicacion = function (id) {
-        return $http.delete(urlBase + '/:' + id);
+        return $http.delete(urlBase + '/' + id);
     };
 
     return PublicacionesFactory;

@@ -14,7 +14,7 @@ exports.inyectar = function(app) {
                         data: {
                             nombreUsuario: childSnapshot.val().nombreUsuario,
                         },
-                        username: childSnapshot.val().nombreUsuario,
+                        username: childSnapshot.val().username,
                         id: childSnapshot.key()
                     };
                     lista.push(itemLista);

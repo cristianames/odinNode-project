@@ -1,5 +1,5 @@
 var Equipo = require('../modelo/Equipo');
-var Usuario = require('../modelo/Usuario');
+var Integrante = require('../modelo/Integrante');
 var Firebase = require("firebase");
 var equipos = new Firebase('https://odingrid.firebaseio.com/equipos');
 
@@ -46,7 +46,7 @@ exports.inyectar = function(app) {
 
     app.post('/api/equipos/:id/integrantes', function(req, res) {
         try {
-            var integrante = Usuario.create(req.body);
+            var integrante = Integrante.create(req.body);
             //console.log(integrante);
             var integrantesRef = new Firebase('https://odingrid.firebaseio.com/equipos/' + req.params.id + '/integrantes');
 

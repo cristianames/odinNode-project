@@ -1,6 +1,6 @@
 app.controller("publicacionController", ['$scope', '$location', 'PublicacionesFactory', '$routeParams', function(scope, location, Publicaciones, routeParams){
 
-    var publicacion;
+    var publicacion = {};
 
     Publicaciones.getPublicacion(routeParams.id)
         .success(function (pub) {
@@ -18,5 +18,9 @@ app.controller("publicacionController", ['$scope', '$location', 'PublicacionesFa
 
     scope.onCancelar = function () {
         location.path("/");
+    }
+
+    scope.onEditar = function () {
+        location.path("/publicaciones/" + publicacion.id + "/editar");
     }
 }]);

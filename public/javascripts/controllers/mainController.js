@@ -1,4 +1,4 @@
-app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFactory', function($scope, Publicaciones,Equipos){
+app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFactory', '$rootScope', function($scope, Publicaciones,Equipos){
     $scope.pubs = {0: {data: {titulo: "Cargando..."}}};
     Publicaciones.getPublicaciones()
         .success(function (pubs) {
@@ -6,7 +6,6 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
             console.log("Publicaciones-Index:")
             console.log(pubs);
         })
-
 
     $scope.crearEquipoMock = function(){
         var equipo = {
@@ -22,7 +21,7 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
         $scope.equipos = [];
         for (var i in res.data) {
             $scope.equipos.push({
-                nombre: res.data[i].nombreEquipo,
+                nombre: res.data[i].nombre,
                 id: i
             });
         }
