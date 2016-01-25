@@ -37,7 +37,7 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
             })
             .error(function(returned){
                 scope.guardar = "Error!"
-                //TODO Hacer que espere un rato y vuelva a estar normal.
+                //TODO(Lucas) Hacer que espere un rato y vuelva a estar normal.
             })
     }
 

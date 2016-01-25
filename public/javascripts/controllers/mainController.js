@@ -1,13 +1,14 @@
-app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFactory', '$rootScope', function($scope, Publicaciones,Equipos){
-    $scope.pubs = {0: {data: {titulo: "Cargando..."}}};
+app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFactory', '$rootScope',
+    function(scope, Publicaciones,Equipos, rootScope){
+
+
+    scope.pubs = {0: {data: {titulo: "Cargando..."}}};
     Publicaciones.getPublicaciones()
         .success(function (pubs) {
-            $scope.pubs = pubs;
-            console.log("Publicaciones-Index:")
-            console.log(pubs);
+            scope.pubs = pubs;
         })
 
-    $scope.crearEquipoMock = function(){
+    scope.crearEquipoMock = function(){
         var equipo = {
             'nombre':'equipoLoco',
             };
@@ -18,9 +19,9 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
     }
 
     Equipos.getEquipos(function (res) {
-        $scope.equipos = [];
+        scope.equipos = [];
         for (var i in res.data) {
-            $scope.equipos.push({
+            scope.equipos.push({
                 nombre: res.data[i].nombre,
                 id: i
             });
@@ -29,7 +30,7 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
     
     //Equipos.getEquipo()
     //    .success(function (equipos) {
-    //            $scope.equipos = equipos;
+    //            scope.equipos = equipos;
     //        //console.log("Publicaciones-Index:")
     //        //console.log(pubs);
     //

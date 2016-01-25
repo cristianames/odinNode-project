@@ -10,7 +10,9 @@ exports.inyectar = function(app) {
         publicaciones.once("value", function (snapshot) {
             if(snapshot.exists()){
                 snapshot.forEach(function(childSnapshot){
-                    itemLista = {data: {titulo: childSnapshot.val().titulo}, id: childSnapshot.key()};
+                    var titulo = childSnapshot.child("titulo");
+                    var descripcion = childSnapshot.child("descripcion");
+                    itemLista = {data: {titulo: titulo.val(), descripcion: descripcion.val()}, id: childSnapshot.key()};
                     lista.push(itemLista);
                 });
             }

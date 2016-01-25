@@ -7,7 +7,7 @@ app.controller("editarPublicacionController", ['$scope', '$location', 'Publicaci
             publicacion = pub;
             scope.publicacionCheckbox = publicacion.data.contributiva;
             scope.publicacionDesarrollo = publicacion.data.desarrollo;
-            if(!publicacion.data.descripcion)                               //TODO Deprecated
+            if(!publicacion.data.descripcion)                               //TODO(Deprecated)
                 scope.publicacionDescripcion = publicacion.data.contenido;  //Deprecated
             else                                                            //Deprecated
                 scope.publicacionDescripcion = publicacion.data.descripcion
@@ -51,7 +51,7 @@ app.controller("editarPublicacionController", ['$scope', '$location', 'Publicaci
             })
             .error(function(returned){
                 scope.guardar = "Error!"
-                //TODO Hacer que espere un rato y vuelva a estar normal.
+                //TODO(Lucas) Hacer que espere un rato y vuelva a estar normal.
             })
     }
 
