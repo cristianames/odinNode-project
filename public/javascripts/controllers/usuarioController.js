@@ -1,6 +1,10 @@
 var firebase = new Firebase("https://odingrid.firebaseio.com");
+var fError;
+var fAuthData;
 
 app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', function(scope, location, Usuarios){
+
+    scope.errorPass=false;
 
     scope.onCancelar = function () {
         location.path("/");
@@ -41,7 +45,49 @@ app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', f
         });
     }
 
+    scope.loguinUsuario = function (){
+        console.log("antes de firebase",scope.logUsername);
+
+        firebase.authWithPassword({
+            email    : scope.logUsername,
+            password : scope.logPassword
+        }, function(error, authData) {
+            if (error) {
+                //funcionLoca();
+                fError = error;
+                scope.errorPass=true;
+                console.log(scope.errorPass);
+                console.log("Login Failed!", error);
+            } else {
+                scope.authData = authData;
+                console.log("Authenticated successfully with payload:", authData);
+            }
+        },
+            {
+            remember: "sessionOnly"
+        });
+
+        console.log("ahi un:", fError);
+        if (fError) {
+             console.log("Login Fallò!", fError);
+             funcionLoca(true);
+        }
+
+
+    }
+
+    scope.probar = function (){
+        scope.errorPass=true;
+    }
+
+    var funcionLoca = function (){
+        scope.errorPass=true;
+    }
+
+
 
 
 
 }]);
+
+
