@@ -16,7 +16,7 @@ exports.inyectar = function(app) {
             }
             equipo.integrantes = integrantes;
             equipo.id = equipoRef.key();
-            console.log(equipo);
+            //console.log(equipo);
             res.send(equipo);
         });
     });
@@ -30,7 +30,7 @@ exports.inyectar = function(app) {
                 equipo.id = i;
                 equipos.push(equipo);
             }
-            //console.log(equipos);
+            console.log(equipos);
             res.send(equipos);
         });
     });

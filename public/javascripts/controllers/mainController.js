@@ -19,24 +19,9 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
 
     Equipos.getEquipos()
         .success(function (res) {
-            $scope.equipos = [];
-            for (var i in res.data) {
-                $scope.equipos.push({
-                    nombre: res.data[i].nombre,
-                    id: i
-            });
-        }
-    })
-    
-    //Equipos.getEquipo()
-    //    .success(function (equipos) {
-    //            $scope.equipos = equipos;
-    //        //console.log("Publicaciones-Index:")
-    //        //console.log(pubs);
-    //
-    //    })
-
-
+            $scope.equipos = res;
+            //console.log(res);
+        });
 }]);
 
 
