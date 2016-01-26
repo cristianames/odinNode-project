@@ -4,6 +4,7 @@ var Firebase = require("firebase");
 var publicaciones = new Firebase('https://odingrid.firebaseio.com/publicaciones');
 
 exports.inyectar = function(app) {
+
     app.get('/api/v1.0/publicacion', function (req, res) {
         var lista = [];
         var itemLista;
@@ -20,24 +21,17 @@ exports.inyectar = function(app) {
         });
     });
 
-    app.post('/api/v1.0/publicacion', function (req, res) {
-        var pusheable = publicaciones.push()
-        pusheable.set(req.body);
-        pusheable.once("value", function(snapshot) {
+    app.get('/api/v1.0/publicacion/:id', function (req, res) {
+        publicaciones.child(req.params.id).once("value", function(snapshot) {
             res.send(empaquetar(snapshot));
         });
     });
 
-    app.post('/api/publicacion', function (req, res) {
+    app.post('/api/v1.0/publicacion', function (req, res) {
         var pusheable = publicaciones.push()
+        //console.log(req.body);
         pusheable.set(req.body);
-        publicaciones.once("value", function(snap) {
-            res.send(snap.val());
-        });
-    });
-
-    app.get('/api/v1.0/publicacion/:id', function (req, res) {
-        publicaciones.child(req.params.id).once("value", function(snapshot) {
+        pusheable.once("value", function(snapshot) {
             res.send(empaquetar(snapshot));
         });
     });
@@ -51,9 +45,7 @@ exports.inyectar = function(app) {
 
 var empaquetar = function(snapshot){
     var returned = {data: 1,id:1};
-    console.log("Antes del val");
     returned.data = snapshot.val();
-    console.log("Despues del val");
     returned.id = snapshot.key();
     return returned;
 }

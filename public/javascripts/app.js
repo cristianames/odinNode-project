@@ -49,7 +49,7 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
         });
 });
 
-app.factory('EtiquetaFactory', ['$http', function($http) {
+app.factory('EtiquetasFactory', ['$http', function($http) {
 
     var urlBase = '/api/v1.0/etiqueta';
     var EtiquetaFactory = {};
@@ -58,22 +58,25 @@ app.factory('EtiquetaFactory', ['$http', function($http) {
         return $http.get(urlBase);
     };
 
-    EtiquetaFactory.getEtiqueta = function (id) {
-        return $http.get(urlBase + '/:' + id);
-    };
+    //NYI
+    //EtiquetaFactory.getEtiqueta = function (id) {
+    //    return $http.get(urlBase + '/:' + id);
+    //};
 
-    EtiquetaFactory.insertEtiqueta = function (etiq) {
-        return $http.post(urlBase, etiq);
-    };
+    //NYI
+    //EtiquetaFactory.insertEtiqueta = function (etiq) {
+    //    return $http.post(urlBase, etiq);
+    //};
 
-    EtiquetaFactory.updateEtiqueta = function (etiq) {
-        return $http.put(urlBase + '/:' + etiq.ID, etiq)
-    };
+    //NYI
+    //EtiquetaFactory.updateEtiqueta = function (etiq) {
+    //    return $http.put(urlBase + '/:' + etiq.ID, etiq)
+    //};
 
-    EtiquetaFactory.deleteEtiqueta = function (id) {
-        return $http.delete(urlBase + '/:' + id);
-    };
-
+    //NYI
+    //EtiquetaFactory.deleteEtiqueta = function (id) {
+    //    return $http.delete(urlBase + '/:' + id);
+    //};
     return EtiquetaFactory;
 }]);
 
@@ -98,9 +101,10 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
         return $http.put(urlBase + '/' + id, pub)
     };
 
-    PublicacionesFactory.deletePublicacion = function (id) {
-        return $http.delete(urlBase + '/' + id);
-    };
+    //NYI
+    //PublicacionesFactory.deletePublicacion = function (id) {
+    //    return $http.delete(urlBase + '/' + id);
+    //};
 
     return PublicacionesFactory;
 }]);

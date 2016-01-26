@@ -2,17 +2,12 @@ app.controller("editarPublicacionController", ['$scope', '$location', 'Publicaci
 
     var publicacion = {};
 
-    Publicaciones.getPublicacion(routeParams.id)
-        .success(function (pub) {
+    Publicaciones.getPublicacion(routeParams.id, function (pub) {
             publicacion = pub;
             scope.publicacionCheckbox = publicacion.data.contributiva;
             scope.publicacionDesarrollo = publicacion.data.desarrollo;
-            if(!publicacion.data.descripcion)                               //TODO(Deprecated)
-                scope.publicacionDescripcion = publicacion.data.contenido;  //Deprecated
-            else                                                            //Deprecated
-                scope.publicacionDescripcion = publicacion.data.descripcion
+            scope.publicacionDescripcion = publicacion.data.descripcion
             scope.publicacionTitulo = publicacion.data.titulo;
-
             scope.etiquetas = publicacion.data.etiquetas;
             scope.nombreBtn = "Actualizar";
             scope.tituloNavbar = "Editar publicacion";

@@ -7,13 +7,10 @@ app.controller("publicacionController", ['$scope', '$location', 'PublicacionesFa
             publicacion = pub;
             scope.publicacionCheckbox = publicacion.data.contributiva;
             scope.publicacionDesarrollo = publicacion.data.desarrollo;
-            if(!publicacion.data.descripcion)                               //TODO(Deprecated)
-                scope.publicacionDescripcion = publicacion.data.contenido;  //Deprecated
-            else                                                            //Deprecated
-                scope.publicacionDescripcion = publicacion.data.descripcion
+            scope.publicacionDescripcion = publicacion.data.descripcion
             scope.publicacionTitulo = publicacion.data.titulo;
 
-            scope.etiquetas = publicacion.data.etiquetas;
+            scope.etiquetas = publicacion.data.etiquetas;   //TODO(Lucas) Deprecado! Actualizar atributos.
         });
 
     scope.onCancelar = function () {

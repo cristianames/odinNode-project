@@ -30,7 +30,7 @@ exports.inyectar = function(app) {
                 equipo.id = i;
                 equipos.push(equipo);
             }
-            console.log(equipos);
+            //console.log(equipos);
             res.send(equipos);
         });
     });
@@ -66,7 +66,7 @@ exports.inyectar = function(app) {
                 }
             });
         } catch (err) {
-            console.log(err);
+            //console.log(err);
             res.error('Error interno. Causa: ' + err);
         }
     });
