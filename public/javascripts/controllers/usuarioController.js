@@ -1,8 +1,6 @@
 var firebase = new Firebase("https://odingrid.firebaseio.com");
-var fError;
-var fAuthData;
 
-app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', function(scope, location, Usuarios){
+app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFactory', function(scope,md5, location,Usuarios){
 
     scope.errorPass=false;
     //scope.errorFirebase= "me mostre";
@@ -68,17 +66,11 @@ app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', f
             remember: "sessionOnly"
         });
 
-        console.log("ahi un:", fError);
-        if (fError) {
-             console.log("Login Fallò!", fError);
-             funcionLoca(true);
-        }
-
-
     }
 
     scope.probar = function (){
-        scope.errorPass=true;
+        var str = md5.createHash("lala");
+       alert(str);
     }
 
 
