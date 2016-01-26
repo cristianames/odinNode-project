@@ -55,11 +55,8 @@ app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', f
         }, function(error, authData) {
             if (error) {
                 //funcionLoca();
-                fError = error;
-                scope.$apply(function(){
-                scope.errorPass=true;
-                scope.errorFirebase= "me mostre";
-                scope.$broadcast('REFRESH');});
+                scope.$apply(function() {mostrarError(error);
+                scope.errorPass=true;});
                 console.log(scope.errorPass);
                 console.log("Login Failed!", error);
             } else {
@@ -84,8 +81,26 @@ app.controller("usuarioController", ['$scope', '$location', 'UsuariosFactory', f
         scope.errorPass=true;
     }
 
-    var funcionLoca = function (){
+
+
+    var mostrarError = function (error){
         scope.errorPass=true;
+        if (error) {
+            switch (error.code) {
+                case "INVALID_EMAIL":
+                    scope.errorFirebase= "The specified user account email is invalid.";
+                    break;
+                case "INVALID_PASSWORD":
+                    scope.errorFirebase="The specified user account password is incorrect.";
+                    break;
+                case "INVALID_USER":
+                    scope.errorFirebase="The specified user account does not exist.";
+                    break;
+                default:
+                    scope.errorFirebase="Error logging user in:"+ error;
+            }
+        }
+
     }
 
 
