@@ -101,10 +101,9 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
         return $http.put(urlBase + '/' + id, pub)
     };
 
-    //NYI
-    //PublicacionesFactory.deletePublicacion = function (id) {
-    //    return $http.delete(urlBase + '/' + id);
-    //};
+    PublicacionesFactory.deletePublicacion = function (id) {
+        return $http.delete(urlBase + '/' + id);
+    };
 
     return PublicacionesFactory;
 }]);

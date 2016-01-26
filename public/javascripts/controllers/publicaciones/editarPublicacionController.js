@@ -1,4 +1,4 @@
-app.controller("editarPublicacionController", ['$scope', '$location', 'PublicacionesFactory', '$routeParams', function(scope, location, Publicaciones, routeParams){
+app.controller("editarPublicacionController", ['$scope', '$location', 'PublicacionesFactory', '$routeParams', '$window', function(scope, location, Publicaciones, routeParams, window){
 
     var publicacion = {};
 
@@ -16,7 +16,8 @@ app.controller("editarPublicacionController", ['$scope', '$location', 'Publicaci
 
 
     scope.onCancelar = function () {
-        location.path("/publicaciones/" + publicacion.id);
+        window.history.back();
+
     }
     scope.onGuardar = function(){
         var pub = {

@@ -7,6 +7,7 @@
             <ul class="nav navbar-nav navbar-left">
             </ul>
             <ul class="nav navbar-nav navbar-right" style="padding-top: 8px;">
+                <button class="btn btn-danger" ng-click="onEliminar()">Eliminar</button>
                 <button class="btn btn-default" ng-click="onCancelar()">Volver</button>
                 <button class="btn btn-primary" ng-click="onEditar()">Editar</button>
             </ul>
@@ -17,7 +18,7 @@
     <table style="width: 100%" >
         <tr>
             <td><label >Etiquetas:</label></td>
-            <td><label ng-repeat="etiqueta in etiquetas">{{etiqueta.nombre}};</label></td>
+            <td><label ng-repeat="etiqueta in publicacionEtiquetas">{{etiqueta.data.nombre}};</label></td>
         </tr>
         <tr>
             <td><label for="contributiva" style="text-align: center">Contributiva:</label></td>

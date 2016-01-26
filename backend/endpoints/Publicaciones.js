@@ -9,7 +9,7 @@ exports.inyectar = function(app) {
         var lista = [];
         var itemLista;
         publicaciones.once("value", function (snapshot) {
-            if(snapshot.exists()){
+            if(snapshot.exists()){ 
                 snapshot.forEach(function(childSnapshot){
                     var titulo = childSnapshot.child("titulo");
                     var descripcion = childSnapshot.child("descripcion");
@@ -23,6 +23,10 @@ exports.inyectar = function(app) {
 
     app.get('/api/v1.0/publicacion/:id', function (req, res) {
         publicaciones.child(req.params.id).once("value", function(snapshot) {
+
+
+
+
             res.send(empaquetar(snapshot));
         });
     });
@@ -30,7 +34,8 @@ exports.inyectar = function(app) {
     app.post('/api/v1.0/publicacion', function (req, res) {
         var pusheable = publicaciones.push()
         //console.log(req.body);
-        pusheable.set(req.body);
+        var pub = Publicacion.create(req.body);
+        pusheable.set(pub);
         pusheable.once("value", function(snapshot) {
             res.send(empaquetar(snapshot));
         });
@@ -39,6 +44,18 @@ exports.inyectar = function(app) {
     app.put('/api/v1.0/publicacion/:id', function (req, res) {
         var pub = Publicacion.create(req.body);
         publicaciones.child(req.params.id).update(pub);
+    });
+
+    app.delete('/api/v1.0/publicacion/:id', function (req, res) {
+
+        var onComplete = function(error) {
+            if (error) {
+                console.log('Error al borrar publicación.');
+            } else {
+                console.log('Publicacion borrada.');
+            }
+        };
+        publicaciones.child(req.params.id).remove(onComplete);
     });
 
 }
