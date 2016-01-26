@@ -32,7 +32,11 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
             templateUrl: 'views/equipos/equipoNuevo.html',
             controller: 'equiposController'
         })
-        .when('/equipos/:id/dashboard', {
+        .when('/equipos/:id/dashboard/', {
+            templateUrl: 'views/equipos/dashboard/dashboard.html',
+            controller: 'dashboardController'
+        })
+        .when('/equipos/:id/dashboard/:page', {
             templateUrl: 'views/equipos/dashboard/dashboard.html',
             controller: 'dashboardController'
         })
@@ -118,18 +122,28 @@ app.factory('EquiposFactory', ['$http', function($http) {
         return $http.get(urlBase);
     };
 
-    EquipoFactory.getEquipo = function(id, callback) {
-        $http.get(urlBase + '/' + id).then(callback);
+    EquipoFactory.getEquipo = function(idEquipo) {
+        return $http.get(urlBase + '/' + idEquipo);
     };
 
-    EquipoFactory.insertIntegrante = function (id, integrante, callback, errorCallback) {
-        $http.post(urlBase + '/' + id + '/integrantes', integrante)
-            .then(callback, errorCallback);
+    EquipoFactory.insertIntegrante = function (idEquipo, integrante) {
+        return $http.post(urlBase + '/' + idEquipo + '/integrantes', integrante);
     }
 
-    EquipoFactory.quitarIntegrante = function (id, username, callback, errorCallback) {
-        $http.delete(urlBase + '/' + id + '/integrantes/' + username)
-            .then(callback, errorCallback);
+    EquipoFactory.quitarIntegrante = function (idEquipo, username) {
+        return $http.delete(urlBase + '/' + idEquipo + '/integrantes/' + username);
+    }
+
+    EquipoFactory.crearPropuesta = function (idEquipo, propuesta) {
+        return $http.post(urlBase + '/' + idEquipo + '/propuestas', propuesta);
+    }
+
+    EquipoFactory.quitarPropuesta = function (idEquipo, idPropuesta) {
+        return $http.delete(urlBase + '/' + idEquipo + '/propuestas/' + idPropuesta);
+    }
+
+    EquipoFactory.editarPropuesta = function (idEquipo, idPropuesta, propuesta) {
+        return $http.put(urlBase + '/' + idEquipo + '/propuestas/' + idPropuesta, propuesta);
     }
 
     return EquipoFactory;
@@ -144,8 +158,8 @@ app.factory('UsuariosFactory', ['$http', function($http) {
         return $http.post(urlBase, user);
     };
 
-    UsuarioFactory.getUsuarios = function (callback) {
-        $http.get(urlBase).then(callback);
+    UsuarioFactory.getUsuarios = function () {
+        return $http.get(urlBase);
     }
 
     return UsuarioFactory;
@@ -159,3 +173,17 @@ app.factory('UsuariosFactory', ['$http', function($http) {
 //            'query': { method:'GET', isArray: false }
 //        });
 //}]);
+
+app.run(['$route', '$rootScope', '$location', function ($route, $rootScope, $location) {
+    var original = $location.path;
+    $location.path = function (path, reload) {
+        if (reload === false) {
+            var lastRoute = $route.current;
+            var un = $rootScope.$on('$locationChangeSuccess', function () {
+                $route.current = lastRoute;
+                un();
+            });
+        }
+        return original.apply($location, [path]);
+    };
+}]);
