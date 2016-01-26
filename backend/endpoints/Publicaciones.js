@@ -23,10 +23,6 @@ exports.inyectar = function(app) {
 
     app.get('/api/v1.0/publicacion/:id', function (req, res) {
         publicaciones.child(req.params.id).once("value", function(snapshot) {
-
-
-
-
             res.send(empaquetar(snapshot));
         });
     });
