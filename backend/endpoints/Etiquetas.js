@@ -4,21 +4,17 @@ var etiquetas = new Firebase('https://odingrid.firebaseio.com/etiquetas');
 
 exports.inyectar = function(app) {
     app.get('/api/v1.0/etiqueta', function (req, res) {
-
-        etiquetas.once("value", function(data) {
-            var lista = data.val();
+        var lista = [];
+        var itemLista;
+        etiquetas.once("value", function (snapshot) {
+            if(snapshot.exists()){
+                snapshot.forEach(function(childSnapshot){
+                    var nombre = childSnapshot.child("nombre");
+                    itemLista = {data: {nombre: nombre.val()}, id: childSnapshot.key()};
+                    lista.push(itemLista);
+                });
+            }
             res.send(lista);
         });
-
-        //res.json({
-        //    items: [
-        //        new Etiqueta('tag1'),
-        //        new Etiqueta('tag2'),
-        //        new Etiqueta('tag3'),
-        //        new Etiqueta('tag4'),
-        //        new Etiqueta('tag5'),
-        //        new Etiqueta('tag6')
-        //    ]
-        //});
     });
 };

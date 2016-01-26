@@ -1,22 +1,13 @@
 //SI DESGLOSAN ESTE ARCHIVO EN VARIOS JS, PRIMERO CREEN UNA CARPETA QUE LOS CONTENGA A TODOS
-app.controller('etiquetasController', ['$scope', 'EtiquetaFactory',
-    function($scope, EtiquetaFactory) {
+app.controller('etiquetasController', ['$scope', 'EtiquetasFactory', '$window', function(scope, EtiquetaFactory, window) {
+
+    EtiquetaFactory.getEtiquetas()
+        .success(function (etiqs) {
+            scope.tags = etiqs;
+        })
 
 
-       //Etiqueta.query(function(data){
-       // $scope.tags = data.items;
-       // console.log($scope.tags);
-       //});
-
-        EtiquetaFactory.getEtiquetas()
-           .success(function (etiqs) {
-               $scope.tags = etiqs;
-               //console.log("Etiquetas:")
-               //console.log(etiqs);
-           })
-
-          //.error(function (pubs) {
-          //   $scope.status = 'Unable to load customer data: ' + error.message;
-          //});
-
+    scope.onVolver = function(){
+        window.history.back();
+    }
 }]);
