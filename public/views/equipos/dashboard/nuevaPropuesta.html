@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">Nueva propuesta</a>
+        </div>
+        <div id="navbar" class="navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="padding-top: 8px;">
+                <div class="btn-group">
+                    <button class="btn btn-default" ng-click="onCancelarPropuesta()">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-default" ng-click="onGuardarPropuesta()">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<form novalidate class="form-group">
+    <label for="titulo">Titulo</label>
+    <input type="text" ng-model="$parent.propuesta.titulo" id="titulo" class="form-control" /><br />
+    <label for="cuerpo">Cuerpo</label>
+    <textarea rows="5" ng-model="$parent.propuesta.cuerpo" id="cuerpo" class="form-control"></textarea>
+</form>
