@@ -1,4 +1,12 @@
-var app = angular.module('app', ['ngRoute', 'ngResource', 'ngMap']);
+var app, deps;
+
+deps = ['angularBootstrapNavTree', 'ngRoute', 'ngResource', 'ngMap'];
+
+if (angular.version.full.indexOf("1.2") >= 0) {
+    deps.push('ngAnimate');
+}
+
+app = angular.module('app', deps);
 
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
@@ -67,20 +75,18 @@ app.factory('EtiquetasFactory', ['$http', function($http) {
     //    return $http.get(urlBase + '/:' + id);
     //};
 
-    //NYI
-    //EtiquetaFactory.insertEtiqueta = function (etiq) {
-    //    return $http.post(urlBase, etiq);
-    //};
+    EtiquetaFactory.insertEtiqueta = function (etiq) {
+        return $http.post(urlBase, etiq);
+    };
 
-    //NYI
-    //EtiquetaFactory.updateEtiqueta = function (etiq) {
-    //    return $http.put(urlBase + '/:' + etiq.ID, etiq)
-    //};
+    EtiquetaFactory.updateEtiqueta = function (id, etiq) {
+        console.log(urlBase + '/' + id);
+        return $http.put(urlBase + '/' + id, etiq)
+    };
 
-    //NYI
-    //EtiquetaFactory.deleteEtiqueta = function (id) {
-    //    return $http.delete(urlBase + '/:' + id);
-    //};
+    EtiquetaFactory.deleteEtiqueta = function (id) {
+        return $http.delete(urlBase + '/' + id);
+    };
     return EtiquetaFactory;
 }]);
 

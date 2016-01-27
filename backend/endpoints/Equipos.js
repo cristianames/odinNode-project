@@ -43,7 +43,7 @@ exports.inyectar = function(app) {
                     equipo.id = i;
                     equipos.push(equipo);
                 }
-                console.log(equipos);
+                //console.log(equipos);
                 res.send(equipos);
             });
         } catch(err) {
