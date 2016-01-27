@@ -1,36 +1,84 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand">Nueva publicacion</a>
+            <a class="navbar-brand">{{tituloNavbar}}</a>
         </div>
         <div id="navbar" class="navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
             </ul>
             <ul class="nav navbar-nav navbar-right" style="padding-top: 8px;">
                 <button class="btn btn-default" ng-click="onCancelar()">Cancelar</button>
-                <button class="btn btn-primary" ng-click="onGuardar()">{{guardar}}</button>
+                <button class="btn btn-primary" ng-click="onGuardar()">{{nombreBtn}}</button>
             </ul>
         </div>
     </div>
 </nav>
-<form class="container-fluid" role="form" style="width: 40%; margin-bottom: 50px; margin-left: 10%">
-    <table style="width: 100%" >
-        <tr>
-            <td><label for="titulo">Titulo:</label></td>
-            <td><input type="text" class="form-control" id="titulo" ng-model="publicacionTitulo" style="width: 300px"></td>
-        </tr>
-        <tr>
-            <td><label for="etiquetas">Etiquetas:</label></td>
-            <td><input type="text" class="form-control" id="etiquetas" ng-model="PublicacionEtiquetas" style="width: 300px"></td>
-        </tr>
-        <tr>
-            <td><label for="contributiva" style="text-align: center">Contributiva:</label></td>
-            <td><input type="checkbox" name="switchbox" id="contributiva" ng-model="publicacionCheckbox" checked></td>
-        </tr>
-    </table>
-    <label for="descripcion" style="margin-top: 10px"> Descripcion:</label>
-    <textarea id="descripcion" rows="2" cols="100" ng-model="publicacionDescripcion" ng-click="onDescripcion()"
-    ng-init="algo = 1"></textarea>
-    <label for="contenido" style="margin-top: 10px"> Desarrollo:</label>
-    <textarea id="contenido" rows="20" cols="120" ng-model="publicacionContenido" ng-click="onContenido()"></textarea>
+
+<form class="form-horizontal" style="margin-left: 5%">
+    <div class="form-group">
+        <!--<label class="control-label col-xs-2">Titulo:</label>-->
+        <div class="col-xs-10">
+            <input class="form-control" ng-model="publicacionTitulo" placeholder="Titulo">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-1" ng-repeat="tag in publicacionEtiquetas">
+            <label ng-click="quitarEtiqueta(tag)">{{tag.data.nombre}}</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <!--<label class="control-label col-xs-2">Añadir etiqueta:</label>-->
+        <button class="btn-success col-xs-1" style="width: 4%; margin-left: 10px; margin-top: 4px"  ng-click="aniadirEtiqueta()">+</button>
+        <div class="col-xs-3">
+            <input class="form-control" ng-model="etiquetaNombre" placeholder="Inserte etiqueta">
+        </div>
+    </div>
+    <div class="checkbox" style="margin-bottom: 10%">
+        <label><input type="checkbox" ng-model="publicacionCheckbox" checked>Contributiva</label>
+    </div>
+    <div class="form-group" style="margin-bottom: 3%">
+        <!--<label class="control-label col-xs-2">Descripcion</label>-->
+        <div class="col-xs-10">
+            <input class="form-control" ng-model="publicacionDescripcion" placeholder="Inserte una breve descripcion">
+        </div>
+    </div>
+    <div class="form-group">
+        <!--<label class="control-label col-xs-2">Desarrollo:</label>-->
+        <div class="col-xs-10 ">
+            <textarea class="form-control" rows="7" ng-model="publicacionDesarrollo"
+                      placeholder="Inserte contenido de la publicacion"></textarea>
+        </div>
+    </div>
 </form>
+
+
+<!--<form class="container-fluid" role="form" style="width: 40%; margin-bottom: 50px; margin-left: 10%">-->
+    <!--<table style="width: 100%" >-->
+        <!--<tr>-->
+            <!--<td><label for="titulo">Titulo:</label></td>-->
+            <!--<td><input type="text" class="form-control" id="titulo" ng-model="publicacionTitulo" placeholder="Contraseña" style="width: 300px"></td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td><label>Etiquetas:</label></td>-->
+            <!--<td ng-repeat="tag in publicacionEtiquetas"> Hola-->
+                <!--<label ng-click="quitarEtiqueta(tag)">{{tag.data.nombre}}</label>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td><label></label></td>-->
+            <!--<td><label>Añadir etiqueta:</label></td>-->
+            <!--<td><input type="text" class="form-control" ng-model="etiquetaNombre" style="width: 150px"></td>-->
+            <!--<td><button class="btn-success" ng-click="aniadirEtiqueta()">+</button></td>-->
+        <!--</tr>-->
+
+        <!--<tr>-->
+            <!--<td><label for="contributiva" style="text-align: center">Contributiva:</label></td>-->
+            <!--<td><input type="checkbox" name="switchbox" id="contributiva" ng-model="publicacionCheckbox" checked></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+    <!--<label for="descripcion" style="margin-top: 10px"> Descripcion:</label>-->
+    <!--<textarea id="descripcion" rows="2" cols="100" ng-model="publicacionDescripcion" ng-click="onDescripcion()"-->
+    <!--ng-init="algo = 1"></textarea>-->
+    <!--<label for="contenido" style="margin-top: 10px"> Desarrollo:</label>-->
+    <!--<textarea id="contenido" rows="20" cols="120" ng-model="publicacionDesarrollo" ng-click="onContenido()"></textarea>-->
+<!--</form>-->

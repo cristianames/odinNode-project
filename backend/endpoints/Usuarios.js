@@ -14,7 +14,7 @@ exports.inyectar = function(app) {
                         data: {
                             nombreUsuario: childSnapshot.val().nombreUsuario,
                         },
-                        username: childSnapshot.val().nombreUsuario,
+                        username: childSnapshot.val().username,
                         id: childSnapshot.key()
                     };
                     lista.push(itemLista);
@@ -24,18 +24,23 @@ exports.inyectar = function(app) {
         });
       });
 
-    var crearUsuario = function(user){
-        console.log("entre a crear usuario");
-        alert(user.contrasenia);
-
-    }
+    //var crearUsuario = function(user){
+    //    console.log("entre a crear usuario");
+    //    alert(user.contrasenia);
+    //
+    //}
 
     app.post('/api/v1.0/usuario', function (req, res) {
-        console.log(req.body);
-        var obj = usuarios.push().set(req.body);  //Estoy pusheando un usuario en firebase con id autogenerado en lista de equipo
-        res.send("Exito!");
-        alert("se creo usuario");
-
+        try {
+            //alert("entre al endpoint");
+            console.log(req.body);
+            var user = Usuario.create(req.body);
+            var obj = usuarios.push().set(user);  //Estoy pusheando un usuario en firebase con id autogenerado en lista de equipo
+            res.send("Exito!");
+            //alert("se creo usuario");
+        } catch (err) {
+            console.log(err);
+        }
     });
 
 
