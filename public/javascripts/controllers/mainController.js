@@ -1,9 +1,9 @@
-app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFactory', function($scope, Publicaciones,Equipos){
+app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFactory', '$rootScope', function($scope, Publicaciones,Equipos, $rootScope){
     $scope.pubs = {0: {data: {titulo: "Cargando..."}}};
     Publicaciones.getPublicaciones()
         .success(function (pubs) {
-            $scope.pubs = pubs;
-            console.log("Publicaciones-Index:")
+            $rootScope.pubs = pubs;
+            console.log("Publicaciones-Index:");
             console.log(pubs);
         })
 

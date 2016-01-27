@@ -38,7 +38,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publicaciones <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ng-href="/publicaciones/{{pub.id}}" ng-repeat="pub in pubs">{{pub.data.titulo}}</a></li>
+                        <li><a ng-href="/publicaciones/{{pub.id}}" ng-repeat="pub in $parent.pubs">{{pub.data.titulo}}</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="/publicaciones">Busqueda avanzada</a></li>
                         <li role="separator" class="divider"></li>

@@ -1,4 +1,4 @@
-app.controller("nuevaPublicacionController", ['$scope', '$location', 'PublicacionesFactory', function(scope, location, Publicaciones){
+app.controller("nuevaPublicacionController", ['$scope', '$location', 'PublicacionesFactory', '$rootScope', function(scope, location, Publicaciones, $rootScope){
     scope.publicacionDescripcion = "Inserte breve descripción.";
     scope.publicacionContenido = "Inserte contenido.";
     scope.publicacionCheckbox = true;  //Si no se pone en true entonces arranca undefined.
@@ -28,16 +28,16 @@ app.controller("nuevaPublicacionController", ['$scope', '$location', 'Publicacio
     }
 
     var guardar = function(pub){
-        Publicaciones.insertPublicacion(pub)
-            .success(function(returned){
+        Publicaciones.insertPublicacion(pub,
+            function(res){
                 console.log("Returned is:");
-                console.log(returned);
+                console.log(res.data);
+                $rootScope.pubs = res.data;
                 location.path("/");
-            })
-            .error(function(returned){
+            },function(res){
                 scope.guardar = "Error!"
                 //TODO Hacer que espere un rato y vuelva a estar normal.
-            })
+            });
     }
 
 }]);

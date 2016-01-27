@@ -92,8 +92,8 @@ app.factory('PublicacionesFactory', ['$http', function($http) {
         return $http.get(urlBase + '/' + id);
     };
 
-    PublicacionesFactory.insertPublicacion = function (pub) {
-        return $http.post(urlBase, pub);
+    PublicacionesFactory.insertPublicacion = function (pub,callback, errorCallback) {
+        return $http.post(urlBase, pub).then(callback, errorCallback);
     };
 
     PublicacionesFactory.updatePublicacion = function (pub) {

@@ -20,6 +20,9 @@
             <td><input type="text" class="form-control" id="equipo" ng-model="equipoNombre" style="width: 300px"></td>
         </tr>
     </table>
+    <li>
+    <label ng-repeat="usuario in usuarios">
+        <input type="checkbox" checklist-model="usuarios" checklist-value="usuario">{{usuario}}
+    </label>
+    </li>
 </form>
-
-
