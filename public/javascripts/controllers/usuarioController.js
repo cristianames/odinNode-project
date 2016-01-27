@@ -69,8 +69,9 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
     }
 
     scope.probar = function (){
-        var str = md5.createHash("lala");
-       alert(str);
+        var hashMail = md5.createHash('brunomendez88@hotmail.com');
+        scope.iconoCara = "http://www.gravatar.com/avatar/"+hashMail;
+       alert(scope.iconoCara);
     }
 
 
