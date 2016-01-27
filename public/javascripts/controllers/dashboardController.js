@@ -11,6 +11,13 @@ app.controller("dashboardController", function($scope, EquiposFactory, UsuariosF
 
     $scope.pagination = pagination[0];
 
+    $scope.estaEnPagina = function(arrayIndices) {
+        for (var i in arrayIndices) {
+            if (pagination[arrayIndices[i]].name == $scope.pagination.name) return true;
+        }
+        return false;
+    };
+
     //Esto sirve si se entra a una parte del dashboard directamente desde url
     for(var i in pagination) {
         if (pagination[i].name == $routeParams.page) $scope.pagination = pagination[i];

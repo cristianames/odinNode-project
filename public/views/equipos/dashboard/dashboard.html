@@ -13,14 +13,19 @@
 <div id="wrapper">
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
-
-        <ul class="list-group" style="margin:15px;">
-            <li class="list-group-item">
-                <a href="#" ng-click="onBtnPropuestas()">Propuestas</a></li>
-            <li class="list-group-item">
-                <a href="#" ng-click="onBtnIntegrantes()">Integrantes</a></li>
-            <li class="list-group-item">
-                <a href="#" ng-click="onBtnConfiguracion()">Configuracion</a></li>
+        <ul class="nav nav-list nav-pills nav-stacked abn-tree dashboardMenu">
+            <li class="abn-tree-row" ng-class="estaEnPagina([1,4,5])?'active':''">
+                <a href="#" ng-click="onBtnPropuestas()">
+                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                    Propuestas</a></li>
+            <li class="abn-tree-row" ng-class="estaEnPagina([2])?'active':''">
+                <a href="#" ng-click="onBtnIntegrantes()">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    Integrantes</a></li>
+            <li class="abn-tree-row" ng-class="estaEnPagina([3])?'active':''">
+                <a href="#" ng-click="onBtnConfiguracion()">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    Configuracion</a></li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->
