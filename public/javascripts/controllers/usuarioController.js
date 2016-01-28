@@ -68,6 +68,19 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
 
     }
 
+    scope.loguearConFacebook = function (){
+
+        firebase.authWithOAuthPopup("facebook", function(error, authData) {
+            if (error) {
+                console.log("Login Failed!", error);
+            } else {
+                console.log("Authenticated successfully with payload:", authData);
+            }
+        });
+    }
+
+
+
     scope.probar = function (){
         var hashMail = md5.createHash('brunomendez88@hotmail.com');
         scope.iconoCara = "http://www.gravatar.com/avatar/"+hashMail;
