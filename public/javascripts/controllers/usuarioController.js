@@ -1,6 +1,6 @@
 var firebase = new Firebase("https://odingrid.firebaseio.com");
 
-app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFactory', function(scope,md5, location,Usuarios){
+app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFactory', function(scope,md5, location,Usuarios,$rootScoope){
 
     scope.errorPass=false;
     //scope.errorFirebase= "me mostre";
@@ -58,8 +58,10 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
                 console.log(scope.errorPass);
                 console.log("Login Failed!", error);
             } else {
-                scope.authData = authData;
-                console.log("Authenticated successfully with payload:", authData);
+                scope.$apply(function() {
+                    $rootScoope._userData=authData;
+                });
+                console.log("Authenticated successfully with payload:", $rootScoope._userData);
             }
         },
             {
@@ -76,6 +78,10 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
             } else {
                 console.log("Authenticated successfully with payload:", authData);
             }
+        },
+            {
+            remember: "sessionOnly",
+            scope: "email,user_likes"
         });
     }
 

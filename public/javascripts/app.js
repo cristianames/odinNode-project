@@ -1,5 +1,9 @@
 var app = angular.module('app', ['ngRoute', 'ngResource', 'ngMap','angular-md5']);
 
+app.run(['$rootScope', function($rootScope) {
+    $rootScope._userData = undefined;
+}]);
+
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
     $locationProvider.html5Mode(true);
 
@@ -127,12 +131,12 @@ app.factory('EquiposFactory', ['$http', function($http) {
     EquipoFactory.insertIntegrante = function (id, integrante, callback, errorCallback) {
         $http.post(urlBase + '/' + id + '/integrantes', integrante)
             .then(callback, errorCallback);
-    }
+    };
 
     EquipoFactory.quitarIntegrante = function (id, username, callback, errorCallback) {
         $http.delete(urlBase + '/' + id + '/integrantes/' + username)
             .then(callback, errorCallback);
-    }
+    };
 
     return EquipoFactory;
 }]);
@@ -148,7 +152,7 @@ app.factory('UsuariosFactory', ['$http', function($http) {
 
     UsuarioFactory.getUsuarios = function (callback) {
         $http.get(urlBase).then(callback);
-    }
+    };
 
     return UsuarioFactory;
 }]);
