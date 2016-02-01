@@ -1,4 +1,5 @@
-app.controller("dashboardController", function($scope, EquiposFactory, UsuariosFactory, $routeParams, $location){
+app.controller("dashboardController", function($scope, $routeParams, $location, $http,
+       EquiposFactory, UsuariosFactory, EtiquetasFactory){
 
     var pagination = [
         { name: 'inicio', url: 'views/equipos/dashboard/inicio.html'},
@@ -42,6 +43,18 @@ app.controller("dashboardController", function($scope, EquiposFactory, UsuariosF
             console.log(res);
             alert('Error al intentar obtener los usuarios. ' + res);
         });
+
+    var etiquetas;
+
+    EtiquetasFactory.getEtiquetas().then(
+        function(response) {
+            //console.log(response.data);
+            etiquetas = response.data.map(function(tag) {
+                return {name: tag.data.nombre};
+            });
+        },function(res){
+            etiquetas = [{name: 'Error al conectar con la base de datos'}];
+    });
 
     //Dashboard menu
 
@@ -96,13 +109,24 @@ app.controller("dashboardController", function($scope, EquiposFactory, UsuariosF
 
     //Propuestas
 
+
     $scope.onNuevaPropuesta = function() {
         cambiarRutaDashboard(4);
     };
 
     $scope.editarPropuesta = function (propuesta) {
         cambiarRutaDashboard(5);
+        var tags = propuesta.etiquetas;
+        var array = [];
+
+        if (tags != undefined) {
+            for (var i in tags) {
+                array.push(i);
+            }
+        }
+
         $scope.propuesta = propuesta;
+        $scope.propuesta.etiquetas = array;
     };
 
     $scope.onGuardarPropuesta = function() {
@@ -112,6 +136,7 @@ app.controller("dashboardController", function($scope, EquiposFactory, UsuariosF
             .success(function (res) {
                 cambiarRutaDashboard(1);
                 $scope.equipo.propuestas[res.id] = res;
+                $scope.propuesta = {};
                 //console.log(res);
             })
             .error(function(res) {
@@ -145,5 +170,12 @@ app.controller("dashboardController", function($scope, EquiposFactory, UsuariosF
                 console.log(res);
                 alert('Error al intentar editar una propuesta. ' + res);
             });
+    };
+
+    $scope.getEtiquetas = function(query) {
+        return etiquetas.filter(function (tag) {
+            //console.log(tag.data.nombre);
+            return tag.name.toLowerCase().indexOf(query.toLowerCase()) != -1;
+        })
     };
 });

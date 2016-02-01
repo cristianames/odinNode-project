@@ -26,3 +26,45 @@
     <label for="cuerpo">Cuerpo</label>
     <textarea rows="5" ng-model="$parent.propuesta.cuerpo" id="cuerpo" class="form-control"></textarea>
 </form>
+
+<label for="etiquetas">Etiquetas</label>
+<tags-input ng-model="$parent.propuesta.etiquetas"
+            display-property="name"
+            placeholder="Agrega una etiqueta"
+            replace-spaces-with-dashes="false"
+            template="tag-template"
+            id="etiquetas">
+    <auto-complete source="getEtiquetas($query)"
+                   min-length="1"
+                   load-on-focus="true"
+                   load-on-empty="false"
+                   max-results-to-show="32"
+                   template="autocomplete-template"></auto-complete>
+</tags-input>
+
+<script type="text/ng-template" id="tag-template">
+    <div class="tag-template">
+        <div class="left-panel">
+            <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+        </div>
+        <div class="right-panel">
+            <span>{{$getDisplayText()}}</span>
+            <a class="remove-button" ng-click="$removeTag()">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="autocomplete-template">
+    <div class="autocomplete-template">
+        <div class="left-panel">
+            <!--<img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" />-->
+        </div>
+        <div class="right-panel">
+            <span ng-bind-html="$highlight($getDisplayText())"></span>
+        </div>
+    </div>
+</script>
+
+<!--<pre>{{$parent.propuesta | json}}</pre>-->

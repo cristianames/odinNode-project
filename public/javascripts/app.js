@@ -1,6 +1,6 @@
 var app, deps;
 
-deps = ['angularBootstrapNavTree', 'ngRoute', 'ngResource', 'ngMap'];
+deps = ['angularBootstrapNavTree', 'ngRoute', 'ngResource', 'ngMap', 'ngTagsInput'];
 
 if (angular.version.full.indexOf("1.2") >= 0) {
     deps.push('ngAnimate');

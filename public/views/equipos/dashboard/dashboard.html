@@ -1,46 +1,54 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
-                <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-            </a>
-            <a class="navbar-brand" style="font-weight: bold">Dashboard</a>
-            <a class="navbar-brand">{{equipo.nombre}}</a>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="../../../stylesheets/dashboard-equipos.css"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#menu-toggle" id="menu-toggle">
+                        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                    </a>
+                    <a class="navbar-brand" style="font-weight: bold">Dashboard</a>
+                    <a class="navbar-brand">{{equipo.nombre}}</a>
+                </div>
+            </div>
+        </nav>
+
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="nav nav-list nav-pills nav-stacked abn-tree dashboardMenu">
+                    <li class="abn-tree-row" ng-class="estaEnPagina([1,4,5])?'active':''">
+                        <a href="#" ng-click="onBtnPropuestas()">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            Propuestas</a></li>
+                    <li class="abn-tree-row" ng-class="estaEnPagina([2])?'active':''">
+                        <a href="#" ng-click="onBtnIntegrantes()">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                            Integrantes</a></li>
+                    <li class="abn-tree-row" ng-class="estaEnPagina([3])?'active':''">
+                        <a href="#" ng-click="onBtnConfiguracion()">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            Configuracion</a></li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="jumbotron" ng-include="pagination.url"></div>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
 
-<div id="wrapper">
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="nav nav-list nav-pills nav-stacked abn-tree dashboardMenu">
-            <li class="abn-tree-row" ng-class="estaEnPagina([1,4,5])?'active':''">
-                <a href="#" ng-click="onBtnPropuestas()">
-                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                    Propuestas</a></li>
-            <li class="abn-tree-row" ng-class="estaEnPagina([2])?'active':''">
-                <a href="#" ng-click="onBtnIntegrantes()">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    Integrantes</a></li>
-            <li class="abn-tree-row" ng-class="estaEnPagina([3])?'active':''">
-                <a href="#" ng-click="onBtnConfiguracion()">
-                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    Configuracion</a></li>
-        </ul>
-    </div>
-    <!-- /#sidebar-wrapper -->
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+    </body>
+</html>
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <div class="jumbotron" ng-include="pagination.url"></div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>

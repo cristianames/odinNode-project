@@ -6,11 +6,3 @@
 .navbar{
     margin-bottom: 20px;
 }
-
-.dashboardMenu {
-    width:200px;
-    margin-left:40px;
-    background:whitesmoke;
-    border:1px solid lightgray;
-    border-radius:5px;
-}

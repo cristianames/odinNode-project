@@ -102,6 +102,7 @@ exports.inyectar = function(app) {
     app.post('/api/equipos/:id/propuestas', function(req, res) {
         try {
             var propuesta = Propuesta.create(req.body);
+            console.log(propuesta);
             var propuestasRef = new Firebase('https://odingrid.firebaseio.com/equipos/'
                 + req.params.id + '/propuestas');
             var propuestaRef = propuestasRef.push();
