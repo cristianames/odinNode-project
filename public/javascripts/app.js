@@ -1,7 +1,8 @@
 var app = angular.module('app', ['ngRoute', 'ngResource', 'ngMap','angular-md5']);
 
 app.run(['$rootScope', function($rootScope) {
-    $rootScope._userData = undefined;
+    $rootScope._userData =undefined;
+    $rootScope._color = 'rojo';
 }]);
 
 app.config(function($routeProvider, $locationProvider, $httpProvider) {

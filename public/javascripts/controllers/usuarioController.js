@@ -1,6 +1,6 @@
 var firebase = new Firebase("https://odingrid.firebaseio.com");
 
-app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFactory', function(scope,md5, location,Usuarios,$rootScoope){
+app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFactory','$rootScope', function(scope,md5, location,Usuarios,$rootScope){
 
     scope.errorPass=false;
     //scope.errorFirebase= "me mostre";
@@ -59,9 +59,9 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
                 console.log("Login Failed!", error);
             } else {
                 scope.$apply(function() {
-                    $rootScoope._userData=authData;
+                    $rootScope._userData=authData;
                 });
-                console.log("Authenticated successfully with payload:", $rootScoope._userData);
+                console.log("Authenticated successfully with payload:", $rootScope._userData);
             }
         },
             {
@@ -76,6 +76,9 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
             if (error) {
                 console.log("Login Failed!", error);
             } else {
+                scope.$apply(function() {
+                    $rootScope._userData=authData;
+                });
                 console.log("Authenticated successfully with payload:", authData);
             }
         },
@@ -88,9 +91,7 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
 
 
     scope.probar = function (){
-        var hashMail = md5.createHash('brunomendez88@hotmail.com');
-        scope.iconoCara = "http://www.gravatar.com/avatar/"+hashMail;
-       alert(scope.iconoCara);
+        console.log($rootScope._color);
     }
 
 
