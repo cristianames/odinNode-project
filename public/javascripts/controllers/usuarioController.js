@@ -78,6 +78,7 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
             } else {
                 scope.$apply(function() {
                     $rootScope._userData=authData;
+                    $rootScope.logueado = true;
                 });
                 console.log("Authenticated successfully with payload:", authData);
             }
@@ -92,6 +93,7 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
 
     scope.probar = function (){
         console.log($rootScope._color);
+        console.log($rootScope._userData.facebook.profileImageURL);
     }
 
 

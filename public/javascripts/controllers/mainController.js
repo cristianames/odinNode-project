@@ -1,5 +1,9 @@
 app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFactory','$rootScope', function($scope, Publicaciones,Equipos,$rootScope){
     $scope.pubs = {0: {data: {titulo: "Cargando..."}}};
+
+    //$scope._user = $rootScope._userData;
+   /* $scope.logueado = $rootScope._userData;*/   //TODO Hacer mejor esta parte
+
     Publicaciones.getPublicaciones()
         .success(function (pubs) {
             $scope.pubs = pubs;
@@ -9,7 +13,9 @@ app.controller("mainController", ['$scope', 'PublicacionesFactory','EquiposFacto
 
 
     $scope.crearEquipoMock = function(){
-        console.log($rootScope._userData);
+        //console.log($scope._user.facebook.profileImageURL);
+        console.log($rootScope._userData.facebook.profileImageURL);
+
     }
 
     Equipos.getEquipos(function (res) {
