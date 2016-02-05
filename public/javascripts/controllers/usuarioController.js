@@ -89,10 +89,31 @@ app.controller("usuarioController", ['$scope','md5', '$location', 'UsuariosFacto
         });
     }
 
+    scope.loguearConGoogle = function (){
+
+        firebase.authWithOAuthPopup("google", function(error, authData) {
+            if (error) {
+                console.log("Login Failed!", error);
+            } else {
+                console.log("Authenticated successfully with payload:", authData);
+                scope.$apply(function() {
+                    $rootScope._userData=authData;
+                    $rootScope.logueado = true;
+                });
+            }
+        },
+            {
+                remember: "sessionOnly",
+                scope: "email,profile"
+            });
+
+    }
+
 
 
     scope.probar = function (){
         console.log($rootScope._color);
+        console.log($rootScope._userData.google.profileImageURL);
         console.log($rootScope._userData.facebook.profileImageURL);
     }
 
