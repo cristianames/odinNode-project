@@ -23,6 +23,12 @@ exports.inyectar = function(app) {
                 for (var i in snapshot.val().propuestas) {
                     equipo.propuestas[i] = snapshot.val().propuestas[i];
                     equipo.propuestas[i].id = i;
+
+                    var tags = [];
+                    for (var tag in equipo.propuestas[i].etiquetas) {
+                        tags.push(tag);
+                    }
+                    equipo.propuestas[i].etiquetas = tags;
                 }
                 //console.log(equipo);
                 res.send(equipo);

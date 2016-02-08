@@ -116,17 +116,7 @@ app.controller("dashboardController", function($scope, $routeParams, $location, 
 
     $scope.editarPropuesta = function (propuesta) {
         cambiarRutaDashboard(5);
-        var tags = propuesta.etiquetas;
-        var array = [];
-
-        if (tags != undefined) {
-            for (var i in tags) {
-                array.push(i);
-            }
-        }
-
         $scope.propuesta = propuesta;
-        $scope.propuesta.etiquetas = array;
     };
 
     $scope.onGuardarPropuesta = function() {
