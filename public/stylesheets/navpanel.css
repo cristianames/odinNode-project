@@ -1,0 +1,23 @@
+/*Implemento clearfix*/
+.navpanel > .panel-heading:after{
+    content: " "; /* Older browser do not support empty content */
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.navpanel > .panel-heading > *{
+    margin:0;
+    padding: 0;
+}
+
+.navpanel > .panel-heading > .panel-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    padding-top: 8px;
+    float: left !important;
+    font-size: 18px;
+    color: #7d7d7d;
+}

@@ -1,41 +1,42 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand">Integrantes</a>
-        </div>
+<div class="panel panel-default navpanel">
+    <div class="panel-heading" >
+        <p class="panel-title">Integrantes</p>
     </div>
-</nav>
+    <div class="panel-body">
 
-<table class="table table-hover">
-    <tr ng-repeat="integrante in equipo.integrantes" style="text-align: center; ">
-        <td>{{integrante}}</td>
-        <td style="width: 200px;">
-            <div class="btn-group">
-                <button type="button" class="btn btn-default btn-xs"
-                        ng-click="quitarIntegrante(integrante)">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Quitar
+        <table class="table table-hover">
+            <tr ng-repeat="integrante in equipo.integrantes" style="text-align: center; ">
+                <td>{{integrante}}</td>
+                <td style="width: 200px;">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-xs"
+                                ng-click="quitarIntegrante(integrante)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Quitar
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs"
+                                ng-click="verIntegrante(integrante)">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver usuario
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <label for="mySelect">Agregar nuevo integrante</label>
+        <div class="input-group">
+            <select name="mySelect" id="mySelect" class="form-control"
+                ng-model="$parent.usuarioSeleccionado"
+                ng-options="usuario.username for usuario in usuarios">
+                <option value="">Selecciona</option>
+            </select>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="onBtnAgregarIntegrante()">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Agregar
                 </button>
-                <button type="button" class="btn btn-default btn-xs"
-                        ng-click="verIntegrante(integrante)">
-                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Ver usuario
-                </button>
-            </div>
-        </td>
-    </tr>
-</table>
+            </span>
+        </div><!-- /input-group -->
 
-<label for="mySelect">Agregar nuevo integrante</label>
-<div class="input-group">
-    <select name="mySelect" id="mySelect" class="form-control"
-        ng-model="$parent.usuarioSeleccionado"
-        ng-options="usuario.username for usuario in usuarios">
-        <option value="">Selecciona</option>
-    </select>
-    <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="onBtnAgregarIntegrante()">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Agregar
-        </button>
-    </span>
-</div><!-- /input-group -->
+        <!--<a href="#" ng-click="onBtnAgregarIntegrante()">Agregar</a>-->
+    </div>
+</div>
 
-<!--<a href="#" ng-click="onBtnAgregarIntegrante()">Agregar</a>-->
